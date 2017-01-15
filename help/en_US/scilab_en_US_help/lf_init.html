@@ -1,0 +1,102 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>lf_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="carrier_rec_process.html">&lt;&lt; carrier_rec_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="lf_reset.html">lf_reset &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a> &gt; lf_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">lf_init</h1>
+    <p class="refpurpose">Initialization of a first or second order loop filter for use in a carrier recovery PLL</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">lf</span><span class="default"> = </span><span class="functionid">lf_init</span><span class="default">();           </span><span class="comment">// Default is first order loop, with tc = 10 samples</span>
+<span class="default">lf</span><span class="default"> = </span><span class="functionid">lf_init</span><span class="default">(1, </span><span class="default">tc</span><span class="default">);      </span><span class="comment">// First order loop filter</span>
+<span class="default">lf</span><span class="default"> = </span><span class="functionid">lf_init</span><span class="default">(2, </span><span class="default">BL</span><span class="default">, </span><span class="default">eta</span><span class="default">); </span><span class="comment">// Second order loop filter</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">tc:</span>
+      <dd><p class="para">Time constant, in samples</p></dd></dt>
+   <dt><span class="term">BL:</span>
+      <dd><p class="para">Loop bandwidth, normalized to sample frequency</p></dd></dt>
+   <dt><span class="term">eta:</span>
+      <dd><p class="para">Damping factor</p></dd></dt>
+   <dt><span class="term">lf:</span>
+      <dd><p class="para">Returned loop filter object</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">The returned object can be used as a component in a carrier recovery process
+(see <a href="carrier_rec_init.html" class="link">carrier_rec_init</a>), or directly with the <code class="varname">process</code> method.
+A first order loop can recover and track the carrier phase (and the carrier frequency is supposed to be low compared to the symbol rate).
+A second order loop can also recover and track the carrier frequency.</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example 1: First order loop filter</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">wf</span> <span class="scilaboperator">=</span> <span class="scilabid">wf_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">bpsk</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">lf</span> <span class="scilaboperator">=</span> <span class="scilabid">lf_init</span><span class="scilabopenclose">(</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabid">tc</span> <span class="scilaboperator">=</span> <span class="scilabnumber">10</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabcomment">// First order loop filter</span>
+<span class="scilabcomment">// lf can be used now with carrier_rec_init</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"><div class="refsection"><h3 class="title">Example 2: Second order loop filter</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">fs</span>  <span class="scilaboperator">=</span> <span class="scilabnumber">1e6</span><span class="scilabdefault">;</span>  <span class="scilabcomment">// 1 MHz sampling frequency</span>
+<span class="scilabid">BL</span>  <span class="scilaboperator">=</span> <span class="scilabnumber">10e3</span><span class="scilabdefault">;</span> <span class="scilabcomment">// 10 KHz loop bandwidth (e.g. ~ 100 samples to converge)</span>
+<span class="scilabid">eta</span> <span class="scilaboperator">=</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span>    <span class="scilabcomment">// Damping factor</span>
+<span class="scilabid">lf</span> <span class="scilaboperator">=</span> <span class="scilabid">lf_init</span><span class="scilabopenclose">(</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabid">BL</span><span class="scilaboperator">/</span><span class="scilabid">fs</span><span class="scilabdefault">,</span><span class="scilabid">eta</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// lf can be used now with carrier_rec_init</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="ped_init.html" class="link">ped_init</a></li>
+   <li class="member"><a href="carrier_rec_init.html" class="link">carrier_rec_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Bibliography</h3>
+   <p class="para">DVBS2 : <em>Carrier phase synchronization techniques for broadband satellite transmissions</em>, ESA, 2003</p></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="carrier_rec_process.html">&lt;&lt; carrier_rec_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="lf_reset.html">lf_reset &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

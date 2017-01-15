@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from fading_chn_process.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="fading_chn_process" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>fading_chn_process</refname>
+    <refpurpose>Simulation of a fading channel (Rayleigh or Rice model)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   y = fading_chn_process(chn,x);
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>chn:</term>
+      <listitem><para> Fading channel object (see <link linkend="fading_chn_init">fading_chn_init</link>)</para></listitem></varlistentry>
+   <varlistentry><term>x:</term>
+      <listitem><para> Input baseband signal</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para> Output baseband signal, after fading.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Proceed to Rayleigh or Rice model simulation on a signal,
+represented in baseband form.
+   </para>
+   <para>
+<refsection><title>Example</title></refsection>
+<programlisting>
+fd = 10;  // Maximum doppler shift = 10 Hz
+fs = 1e4; // Sampling frequency = 10 kHz
+chn = fading_chn_init('rice', fd, fs, 0.0);
+x = ones(fs,1); // 1 second
+x = fading_chn_process(chn,x);
+</programlisting>
+<mediaobject><imageobject><imagedata fileref="ex-chn-simu1.png" format="PNG"/></imageobject><caption><para>Example of channel simulation (channel magnitude)</para></caption></mediaobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="fading_chn_init">fading_chn_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

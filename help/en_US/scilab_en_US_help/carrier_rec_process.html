@@ -1,0 +1,108 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>carrier_rec_process</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="carrier_rec_init.html">&lt;&lt; carrier_rec_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="lf_init.html">lf_init &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a> &gt; carrier_rec_process</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">carrier_rec_process</h1>
+    <p class="refpurpose">Main process for the carrier recovery</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">[</span><span class="default">cr</span><span class="default">,</span><span class="default">z2</span><span class="default">] = </span><span class="functionid">carrier_rec_process</span><span class="default">(</span><span class="default">cr</span><span class="default">,</span><span class="default">z1</span><span class="default">)</span>
+<span class="default">[</span><span class="default">cr</span><span class="default">,</span><span class="default">z2</span><span class="default">,</span><span class="default">dbg</span><span class="default">] = </span><span class="functionid">carrier_rec_process</span><span class="default">(</span><span class="default">cr</span><span class="default">,</span><span class="default">z1</span><span class="default">);</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">cr:</span>
+      <dd><p class="para">Carrier recovery object</p></dd></dt>
+   <dt><span class="term">z1:</span>
+      <dd><p class="para">Input I/Q sample</p></dd></dt>
+   <dt><span class="term">z2:</span>
+      <dd><p class="para">Output I/Q sample, frequency and phase corrected</p></dd></dt>
+   <dt><span class="term">dbg:</span>
+      <dd><p class="para">Optional debug information (recovered carrier)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Run a local oscillator tuned to the input signal through a phase error detector and a loop filter. The local oscillator is used to correct the phase and frequency of the input signal:
+<span><img src='./_LaTeX_carrier_rec_process.xml_1.png' style='position:relative;top:5px;width:89px;height:21px'/></span>, with <span><img src='./_LaTeX_carrier_rec_process.xml_2.png' style='position:relative;top:2px;width:29px;height:16px'/></span> current phase of the local oscillator.</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// Build a BPSK signal</span>
+<span class="scilabid">mod</span> <span class="scilaboperator">=</span> <span class="scilabid">mod_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">bpsk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span><span class="scilabid">fs</span><span class="scilaboperator">=</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabid">fi</span><span class="scilaboperator">=</span><span class="scilabnumber">0</span><span class="scilabdefault">,</span><span class="scilabid">fsymb</span><span class="scilaboperator">=</span><span class="scilabnumber">1</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabopenclose">[</span><span class="scilabid">mod</span><span class="scilabdefault">,</span><span class="scilabid">z1</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">mod_process</span><span class="scilabopenclose">(</span><span class="scilabid">mod</span><span class="scilabdefault">,</span><span class="scilabid">prbs</span><span class="scilabopenclose">(</span><span class="scilabnumber">100</span><span class="scilabopenclose">)</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// With some noise and phase offset</span>
+<span class="scilabid">z1</span> <span class="scilaboperator">=</span> <span class="scilabid">awgn</span><span class="scilabopenclose">(</span><span class="scilabid">z1</span><span class="scilabdefault">,</span> <span class="scilabnumber">0.05</span><span class="scilabdefault">,</span> <span class="scilabstring">&#0039;</span><span class="scilabstring">c</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span> <span class="scilaboperator">.*</span> <a class="scilabcommand" href="scilab://exp">exp</a><span class="scilabopenclose">(</span><span class="scilabconstants">%i</span><span class="scilaboperator">*</span><span class="scilabnumber">0.7</span><span class="scilaboperator">*</span><span class="scilabconstants">%pi</span><span class="scilaboperator">/</span><span class="scilabnumber">2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">//</span>
+<span class="scilabcomment">// Build a carrier recovery object</span>
+<span class="scilabid">ped</span> <span class="scilaboperator">=</span> <span class="scilabid">ped_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">psk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span> <span class="scilabnumber">2</span><span class="scilabdefault">,</span> <span class="scilabid">tc</span> <span class="scilaboperator">=</span> <span class="scilabnumber">10</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabcomment">// Default PED for BPSK</span>
+<span class="scilabid">lf</span> <span class="scilaboperator">=</span> <span class="scilabid">lf_init</span><span class="scilabopenclose">(</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabid">tc</span> <span class="scilaboperator">=</span> <span class="scilabnumber">10</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabcomment">// First order loop filter</span>
+<span class="scilabid">cr</span> <span class="scilaboperator">=</span> <span class="scilabid">carrier_rec_init</span><span class="scilabopenclose">(</span><span class="scilabid">ped</span><span class="scilabdefault">,</span> <span class="scilabid">lf</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">//</span>
+<span class="scilabcomment">// Proceed to carrier recovery</span>
+<span class="scilabopenclose">[</span><span class="scilabid">cr</span><span class="scilabdefault">,</span><span class="scilabid">z2</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">carrier_rec_process</span><span class="scilabopenclose">(</span><span class="scilabid">cr</span><span class="scilabdefault">,</span><span class="scilabid">z1</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">//</span>
+<a class="scilabmacro" href="scilab://scf">scf</a><span class="scilabopenclose">(</span><span class="scilabnumber">0</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabmacro" href="scilab://clf">clf</a><span class="scilabopenclose">(</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabmacro" href="scilab://subplot">subplot</a><span class="scilabopenclose">(</span><span class="scilabnumber">211</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">plot_const</span><span class="scilabopenclose">(</span><span class="scilabid">z1</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabcommand" href="scilab://xtitle">xtitle</a><span class="scilabopenclose">(</span><span class="scilabstring">&#0034;</span><span class="scilabstring">Input of carrier recovery</span><span class="scilabstring">&#0034;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabmacro" href="scilab://subplot">subplot</a><span class="scilabopenclose">(</span><span class="scilabnumber">212</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">plot_const</span><span class="scilabopenclose">(</span><span class="scilabid">z2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabcommand" href="scilab://xtitle">xtitle</a><span class="scilabopenclose">(</span><span class="scilabstring">&#0034;</span><span class="scilabstring">Output of carrier recovery</span><span class="scilabstring">&#0034;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div>
+<div class="mediaobject"><img src='./ex_carrier_rec_process1.png'/><caption><b><p class="para">Example: BPSK signal with phase offset before and after carrier recovery.</p></b></caption></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="carrier_rec_init.html" class="link">carrier_rec_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="carrier_rec_init.html">&lt;&lt; carrier_rec_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="lf_init.html">lf_init &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

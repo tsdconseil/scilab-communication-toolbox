@@ -1,0 +1,106 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ted_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="scurve.html">&lt;&lt; scurve</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a> &gt; ted_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">ted_init</h1>
+    <p class="refpurpose">Creation of a Timing Error Detector (TED)</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">ted</span><span class="default"> = </span><span class="functionid">ted_init</span><span class="default">();                </span><span class="comment">// Default is Gardner detector</span>
+<span class="default">ted</span><span class="default"> = </span><span class="functionid">ted_init</span><span class="default">(</span>&#0039;<span class="default">gardner</span>&#0039;<span class="default">[,</span><span class="default">opt</span><span class="default">]); </span><span class="comment">// Gardner</span>
+<span class="default">ted</span><span class="default"> = </span><span class="functionid">ted_init</span><span class="default">(</span>&#0039;<span class="default">mm</span>&#0039;<span class="default">);            </span><span class="comment">// Mueller and Muller detector</span>
+<span class="default">ted</span><span class="default"> = </span><span class="functionid">ted_init</span><span class="default">(</span>&#0039;<span class="default">el</span>&#0039;<span class="default">);            </span><span class="comment">// Early-late detector</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">opt:</span>
+      <dd><p class="para">optionnal option for Gardner detector: <code class="varname">&#0039;b&#0039;</code> for basic Gardner, <code class="varname">&#0039;u&#0039;</code> for upgraded Gardner (insensible to DC offset). If not specified, the ugraded version is selected.</p></dd></dt>
+   <dt><span class="term">ted:</span>
+      <dd><p class="para">the timing error detector object</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">A timing error detector is an algorithm that can detect the current clock
+offset between the received signal and the local sampling clock. The timing error estimation
+is usually based on the detection of transitions in the received signal. Different estimators
+are included in the library:
+<ul class="itemizedlist"><li><p class="para"><b>Gardner detector:</b></p>
+   <p class="para">With &#0039;b&#0039; option (basic), compute
+<span><img src='./_LaTeX_ted_init.xml_1.png' style='position:relative;top:6px;width:148px;height:20px'/></span></p>
+   <p class="para">With &#0039;u&#0039; option (upgraded), compute
+<span><img src='./_LaTeX_ted_init.xml_2.png' style='position:relative;top:8px;width:236px;height:24px'/></span></p></li>
+<li><p class="para"><b>Mueller and Muller detector:</b></p>
+   <p class="para">Compute
+<span><img src='./_LaTeX_ted_init.xml_3.png' style='position:relative;top:6px;width:148px;height:20px'/></span>
+with <span><img src='./_LaTeX_ted_init.xml_4.png' style='position:relative;top:2px;width:12px;height:11px'/></span> = received signal, and <span><img src='./_LaTeX_ted_init.xml_5.png' style='position:relative;top:2px;width:14px;height:16px'/></span> = estimated signal (here sign(r)).
+<p class="para">Restrictions :
+<ul class="itemizedlist"><li>AGC et DC offset correction are necessarily done before.</li>
+<li>Needs only 1 sample / symbol.</li></ul></p></p></li>
+<li><p class="para"><b>Early-late gate detector,</b>
+with delay = 1/2 symbol.</p>
+   <p class="para">Compute: <span><img src='./_LaTeX_ted_init.xml_6.png' style='position:relative;top:6px;width:120px;height:18px'/></span></p></li></ul></p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">ted</span> <span class="scilaboperator">=</span> <span class="scilabid">ted_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">mm</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">plot_scurve</span><span class="scilabopenclose">(</span><span class="scilabid">ted</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div>
+<img src='./ex_ted_init.png'/></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="clock_rec_init.html" class="link">clock_rec_init</a></li>
+   <li class="member"><a href="scurve.html" class="link">scurve</a></li>
+   <li class="member"><a href="plot_scurve.html" class="link">plot_scurve</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="scurve.html">&lt;&lt; scurve</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from plot_scurve.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="plot_scurve" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>plot_scurve</refname>
+    <refpurpose>Plot the S-curve of a timing error detector (TED)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   plot_scurve(ted)
+   plot_scurve(ted,opt)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>ted:</term>
+      <listitem><para> Timing error detector object (as returned by the <link linkend="ted_init">ted_init</link> function)</para></listitem></varlistentry>
+   <varlistentry><term>opt:</term>
+      <listitem><para> Optional plotting string option (see <varname>plot()</varname> documentation)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Plot the curve of the result of the TED versus real timing error.
+<refsection><title>Example</title></refsection>
+<programlisting>
+clf();
+plot_scurve(ted_gardner());
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_scurve.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="scurve">scurve</link></member>
+   <member><link linkend="ted_init">ted_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

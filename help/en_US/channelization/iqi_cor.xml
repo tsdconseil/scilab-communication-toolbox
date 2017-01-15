@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from iqi_cor.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="iqi_cor" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>iqi_cor</refname>
+    <refpurpose>I/Q imbalance correction</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   y = iqi_cor(x, g, phi)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>x:</term>
+      <listitem><para> Input I/Q signal (complex vector)</para></listitem></varlistentry>
+   <varlistentry><term>g:</term>
+      <listitem><para> Gain relative imbalance</para></listitem></varlistentry>
+   <varlistentry><term>phi:</term>
+      <listitem><para> Phase imbalance (in radians)</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para> Output I/Q signal, with imbalance corrected</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Fix the phase and amplitude imbalance of the received I/Q signal (x is complex).
+g and phi can be estimated (blind estimation) with the function iq_blind_est.
+<programlisting>
+// Generation of a QAM16 signal  (with IF = 0)
+mod = mod_init('qam16',1000,0,50);
+[mod,x] = mod_process(mod,prbs(5000));
+x = awgn(x,0.02,'c'); // noise simulation
+scf(0); clf();
+subplot(131); plot_const(x); xtitle("Without imbalance");
+;
+// I/Q imbalance simulation
+x = iqi_simu(x,%pi/10,1.3);
+subplot(132); plot_const(x); xtitle("With imbalance");
+;
+// I/Q imbalance detection
+[g,phi] = iqi_blind_est(x);
+;
+// I/Q imbalance correction
+x = iqi_cor(x,g,phi);
+subplot(133); plot_const(x); xtitle("Imbalance detected and corrected");
+</programlisting>
+<imageobject><imagedata fileref="ex_iqimbalance.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="iqi_blind_est">iqi_blind_est</link></member>
+   <member><link linkend="iqi_irr">iqi_irr</link></member>
+   <member><link linkend="iqi_simu">iqi_simu</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available at http://www.tsdconseil.fr/log/sct</member>
+   </simplelist>
+</refsection>
+</refentry>

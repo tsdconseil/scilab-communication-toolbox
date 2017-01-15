@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from berawgn.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="berawgn" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>berawgn</refname>
+    <refpurpose>Computes Bit Error Rate (ber) for Additive White Gaussian Noise (AWGN) channel</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   ber = berawgn(wf,ebno)
+   ber = berawgn(type,ebno[,M[,opt]])
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>wf:</term>
+      <listitem><para> Waveform object (see <link linkend="wf_init">wf_init</link>)</para></listitem></varlistentry>
+   <varlistentry><term>ebno:</term>
+      <listitem><para> Eb/No, in dB (a vector or a single value)</para></listitem></varlistentry>
+   <varlistentry><term>type:</term>
+      <listitem><para> Waveform type ('ask','qam','psk','qpsk','dpsk','oqpsk','fsk',...)</para></listitem></varlistentry>
+   <varlistentry><term>M:</term>
+      <listitem><para> Number of symbols used in transmission (default is 2). It is integer power of 2 and one among 2,4,8,16,32</para></listitem></varlistentry>
+   <varlistentry><term>opt:</term>
+      <listitem><para> 'c' (coherent demodulation) or 'i' (incoherent)</para></listitem></varlistentry>
+   <varlistentry><term>ber:</term>
+      <listitem><para> Resulting Bit Error Rate vector (one value for each valeu of Eb/N0)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+When symbols are transmitted over communication channel having additive white gaussian noise then probability of error for the received symbols is given by this function. For case of 'fsk' correlation among the carriers and method used for detection at receiver which is coherent or noncoherent also needs to be specified. This function returns an array having same size as the size of array containing Eb/No values.
+   </para>
+   <para>
+<refsection><title>Note</title></refsection>
+The original code for this function has been written by:
+Vinayak Chandra Sharma (Department of Electrical Engineering, IIT Bombay),
+guided by prof. Saravanan Vijayakumaran
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+ber = berawgn('psk',1:10,8) // 8-PSK
+ber = berawgn('fsk',1:10,2,'c')  // 2-FSK, coherent demodulation
+ber = berawgn('fsk',1:10,2,'i')  // 2-FSK, incoherent demodulation
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="channel_capacity">channel_capacity</link></member>
+   <member><link linkend="wf_init">wf_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>Original code:</member>
+   <member>Vinayak Chandra Sharma (Department of Electrical Engineering, IIT Bombay),</member>
+   <member>Guided by prof. Saravanan Vijayakumaran</member>
+   <member>With modifications by J.A.</member>
+   </simplelist>
+</refsection>
+</refentry>

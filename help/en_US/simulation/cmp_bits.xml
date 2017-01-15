@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from cmp_bits.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="cmp_bits" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>cmp_bits</refname>
+    <refpurpose>Alignment of 2 bits vectors and counting the number of errors</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [b1,b2[,nerr,ber]] = cmp_bits(b1,b2);
+   [b1,b2[,nerr,ber]] = cmp_bits(b1,b2,'p',k); // Try to solve phase ambiguity (2^k-PSK)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>b1:</term>
+      <listitem><para> First bits vector (as output: realigned with b2)</para></listitem></varlistentry>
+   <varlistentry><term>b2:</term>
+      <listitem><para> Second bits vector (as output: realigned with b1)</para></listitem></varlistentry>
+   <varlistentry><term>nerr:</term>
+      <listitem><para> Number of errors (in bits) between the 2 realigned vectors</para></listitem></varlistentry>
+   <varlistentry><term>ber:</term>
+      <listitem><para> Bit Error Rate</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Try to find the best correlation between the 2 bit vectors and
+count the number of errors (ignoring the 2 first bits and 2 last bits).
+   </para>
+   <para>
+<refsection><title>Example</title></refsection>
+<programlisting>
+b1 = [0 1 0 0 0 1];
+b2 =   [1 0 0 0 1];
+[b1,b2,nerr,ber] = cmp_bits(b1,b2);
+</programlisting>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

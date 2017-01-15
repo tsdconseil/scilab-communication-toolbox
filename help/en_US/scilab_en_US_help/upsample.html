@@ -1,0 +1,85 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>upsample</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="symmap.html">&lt;&lt; symmap</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_9ead878fcafd3686b5482d1be5035e14.html">Channel simulation &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a> &gt; upsample</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">upsample</h1>
+    <p class="refpurpose">Upsample the input signal by the factor <code class="varname">osf</code>.</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">y</span><span class="default"> = </span><span class="functionid">upsample</span><span class="default">(</span><span class="default">x</span><span class="default">,</span><span class="default">osf</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">x:</span>
+      <dd><p class="para">input signal</p></dd></dt>
+   <dt><span class="term">osf:</span>
+      <dd><p class="para">over-sampling factor</p></dd></dt>
+   <dt><span class="term">y:</span>
+      <dd><p class="para">output, upsampled, signal</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Insert <code class="varname">osf</code>-1 zeros between each input sample</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">y</span> <span class="scilaboperator">=</span> <span class="scilabid">upsample</span><span class="scilabopenclose">(</span><span class="scilabopenclose">[</span><span class="scilabnumber">1</span> <span class="scilabnumber">2</span> <span class="scilabnumber">3</span> <span class="scilabnumber">4</span> <span class="scilabnumber">5</span> <span class="scilabnumber">6</span><span class="scilabopenclose">]</span><span class="scilabdefault">,</span> <span class="scilabnumber">2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// y should be [1 0 2 0 3 0 4 0 5 0 6 0]</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="downsample.html" class="link">downsample</a></li>
+   <li class="member"><a href="resample.html" class="link">resample</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="symmap.html">&lt;&lt; symmap</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_9ead878fcafd3686b5482d1be5035e14.html">Channel simulation &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

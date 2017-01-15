@@ -1,0 +1,91 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>equalizer_zfe</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="equalizer_process.html">&lt;&lt; equalizer_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_26b0d8d0858721741e04e5ee32cfcf28.html">Graphics &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization</a> &gt; equalizer_zfe</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">equalizer_zfe</h1>
+    <p class="refpurpose">Zero-forcing equalizer (ZFE) FIR filter computation</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">g</span><span class="default"> = </span><span class="functionid">equalizer_zfe</span><span class="default">(</span><span class="default">h</span><span class="default">,</span><span class="default">n</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">h:</span>
+      <dd><p class="para">Channel filter impulse response</p></dd></dt>
+   <dt><span class="term">n:</span>
+      <dd><p class="para">Number of coefficients to use for the equalization filter</p></dd></dt>
+   <dt><span class="term">g:</span>
+      <dd><p class="para">Output equalization filter coefficients (FIR filter)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Given a channel impulse response <span><img src='./_LaTeX_equalizer_zfe.xml_1.png' style='position:relative;top:6px;width:34px;height:20px'/></span>, computes the coefficients of a FIR filter <span><img src='./_LaTeX_equalizer_zfe.xml_2.png' style='position:relative;top:6px;width:32px;height:20px'/></span>, trying to approximate <span><img src='./_LaTeX_equalizer_zfe.xml_3.png' style='position:relative;top:6px;width:71px;height:20px'/></span>, <span><img src='./_LaTeX_equalizer_zfe.xml_4.png' style='position:relative;top:2px;width:13px;height:16px'/></span> being a global delay. That is, g is approximately the inverse filter of h.</p>
+   <p class="para">Note: this require to be able to measure the channel impulse response (for instance by sending a dirac-like signal at the emitter side).</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// Measured channel response</span>
+<span class="scilabid">h</span> <span class="scilaboperator">=</span> <span class="scilabopenclose">[</span><span class="scilabnumber">0.1</span> <span class="scilabnumber">1</span> <span class="scilabnumber">0.2</span><span class="scilabopenclose">]</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Try to compute an inverse FIR filter</span>
+<span class="scilabid">g</span> <span class="scilaboperator">=</span> <span class="scilabid">equalizer_zfe</span><span class="scilabopenclose">(</span><span class="scilabid">h</span><span class="scilabdefault">,</span> <span class="scilabnumber">5</span><span class="scilabopenclose">)</span>
+<span class="scilabcomment">// Test the convolution product between g and h:</span>
+<span class="scilabcomment">// this should approximativly be a dirac.</span>
+<a class="scilabmacro" href="scilab://convol">convol</a><span class="scilabopenclose">(</span><span class="scilabid">g</span><span class="scilabdefault">,</span><span class="scilabid">h</span><span class="scilabopenclose">)</span><span class="scilaboperator">&#0039;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="equalizer_init.html" class="link">equalizer_init</a></li>
+   <li class="member"><a href="equalizer_process.html" class="link">equalizer_process</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="equalizer_process.html">&lt;&lt; equalizer_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_26b0d8d0858721741e04e5ee32cfcf28.html">Graphics &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

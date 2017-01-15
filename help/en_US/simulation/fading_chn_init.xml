@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from fading_chn_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="fading_chn_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>fading_chn_init</refname>
+    <refpurpose>Initialization of a fading channel object</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   chn = fading_chn_init('rayleigh',fd,fs);
+   chn = fading_chn_init('rice',fd,fs,K);
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>fd:</term>
+      <listitem><para> Maximum doppler frequency (in Hz)</para></listitem></varlistentry>
+   <varlistentry><term>fs:</term>
+      <listitem><para> Sampling frequency (in Hz)</para></listitem></varlistentry>
+   <varlistentry><term>K:</term>
+      <listitem><para> Rician factor</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Creation of a fading channel simulator object.
+One can use the Rayleigh (when no dominent path exists) or the Rice (with a dominent path) model.
+   </para>
+   <para>
+A complete example can be found in the <link linkend="fading_chn_process">fading_chn_process</link> function.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="fading_chn_process">fading_chn_process</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

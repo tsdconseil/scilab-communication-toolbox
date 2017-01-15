@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from psfilter_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="psfilter_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>psfilter_init</refname>
+    <refpurpose>Creation of a pulse shaping filter</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   psf = psfilter_init('none', osf)
+   psf = psfilter_init('nrz', osf)
+   psf = psfilter_init('srrc', osf, ntaps, roll_off)
+   psf = psfilter_init('rc', osf, ntaps, roll_off)
+   psf = psfilter_init('gaussian', osf, ntaps, BT)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>osf:</term>
+      <listitem><para> Over-Sampling Factor (number of samples by symbol)</para></listitem></varlistentry>
+   <varlistentry><term>ntaps:</term>
+      <listitem><para> Number of taps of the FIR filter approximation</para></listitem></varlistentry>
+   <varlistentry><term>roll_off:</term>
+      <listitem><para> Roll-off factor (for RC / SRRC filters)</para></listitem></varlistentry>
+   <varlistentry><term>BT:</term>
+      <listitem><para> Bandwidth-time product (for gaussian filter)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// Gaussian filter, 4 samples/symbol, 16 taps FIR, B.T. = 0.5
+psf = psfilter_init('g', 4, 16, 0.5);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="psfilter_process">psfilter_process</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

@@ -1,0 +1,463 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	
+      </td>
+      <td width="40%" class="center">
+      	
+      </td>
+      <td width="30%" class="next">
+      	
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    
+    <br /><br />
+    <h3 class="book-title">comm_tbx</h3>
+<ul class="list-part"><a name="comm_tbx_manual"></a><div class="info"></div>
+
+<li><a href="section_f94753725ca926e48269b81a1c9e8803.html" class="part">Carrier recovery</a>
+<ul class="list-chapter"><li><a href="carrier_rec_init.html" class="refentry">carrier_rec_init</a> &#8212; <span class="refentry-description">Initialization of a carrier recovery loop object</span></li>
+
+
+
+
+
+<li><a href="carrier_rec_process.html" class="refentry">carrier_rec_process</a> &#8212; <span class="refentry-description">Main process for the carrier recovery</span></li>
+
+
+
+
+
+<li><a href="lf_init.html" class="refentry">lf_init</a> &#8212; <span class="refentry-description">Initialization of a first or second order loop filter for use in a carrier recovery PLL</span></li>
+
+
+
+
+
+<li><a href="lf_reset.html" class="refentry">lf_reset</a> &#8212; <span class="refentry-description">Reset the current phase (and optionnaly frequency) of a loop filter object.</span></li>
+
+
+
+
+
+<li><a href="ped_init.html" class="refentry">ped_init</a> &#8212; <span class="refentry-description">Phase error detector for BPSK / M-ASK (squaring loop) and M-PSK (<span><img src='./_LaTeX_ped_init.xml_1.png' style='position:relative;top:2px;width:24px;height:19px'/></span> loop)</span></li></ul></li>
+<li><a href="section_7ab88b39572d31e8ba7f615e3a264225.html" class="part">Channelization</a>
+<ul class="list-chapter"><li><a href="channelize.html" class="refentry">channelize</a> &#8212; <span class="refentry-description">Channelization: frequency multiplexing of m input signals into a single signal (but with bandwidth multiplied by m)</span></li>
+
+
+
+
+
+<li><a href="downconvert_init.html" class="refentry">downconvert_init</a> &#8212; <span class="refentry-description">Initialization of a baseband down-converter.</span></li>
+
+
+
+
+
+<li><a href="downconvert_process.html" class="refentry">downconvert_process</a> &#8212; <span class="refentry-description">Down-conversion to baseband.</span></li>
+
+
+
+
+
+<li><a href="iqi_blind_est.html" class="refentry">iqi_blind_est</a> &#8212; <span class="refentry-description">I/Q imbalance blind estimation</span></li>
+
+
+
+
+
+<li><a href="iqi_cor.html" class="refentry">iqi_cor</a> &#8212; <span class="refentry-description">I/Q imbalance correction</span></li>
+
+
+
+
+
+<li><a href="iqi_irr.html" class="refentry">iqi_irr</a> &#8212; <span class="refentry-description">Compute Image Rejection Ratio (IRR), given the gain and phase imbalance of a quadrature mixer</span></li>
+
+
+
+
+
+<li><a href="polyphase_decimation.html" class="refentry">polyphase_decimation</a> &#8212; <span class="refentry-description">Apply a FIR filter and decimate the output, using efficient polyphase structure</span></li>
+
+
+
+
+
+<li><a href="polyphase_filter.html" class="refentry">polyphase_filter</a> &#8212; <span class="refentry-description">Creation of a polyphase decimation filter structure</span></li>
+
+
+
+
+
+<li><a href="polyphase_form.html" class="refentry">polyphase_form</a> &#8212; <span class="refentry-description">Creation of the polyphase representation of a signal</span></li>
+
+
+
+
+
+<li><a href="unchannelize.html" class="refentry">unchannelize</a> &#8212; <span class="refentry-description">Extract m channels (with identical bandwidth) using a polyphase filter bank and FFT (Harris method).</span></li></ul></li>
+<li><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html" class="part">Clock recovery</a>
+<ul class="list-chapter"><li><a href="clock_rec_init.html" class="refentry">clock_rec_init</a> &#8212; <span class="refentry-description">Creation of a clock recovery object.</span></li>
+
+
+
+
+
+<li><a href="clock_rec_process.html" class="refentry">clock_rec_process</a> &#8212; <span class="refentry-description">Proceed to clock recovery. Output signal y is resampled at symbol frequency and synchronized with the detected clock.</span></li>
+
+
+
+
+
+<li><a href="delay_estim.html" class="refentry">delay_estim</a> &#8212; <span class="refentry-description">Accurate fractionnal delay estimation between two signals</span></li>
+
+
+
+
+
+<li><a href="frac_delay.html" class="refentry">frac_delay</a> &#8212; <span class="refentry-description">Fractionnal (sub-sample accuracy) delaying of a signal</span></li>
+
+
+
+
+
+<li><a href="itrp_init.html" class="refentry">itrp_init</a> &#8212; <span class="refentry-description">Initialization of an interpolator object</span></li>
+
+
+
+
+
+<li><a href="resample.html" class="refentry">resample</a> &#8212; <span class="refentry-description">Resampling at a different frequency</span></li>
+
+
+
+
+
+<li><a href="scurve.html" class="refentry">scurve</a> &#8212; <span class="refentry-description">Compute the S-curve of a timing error detector (ted)</span></li>
+
+
+
+
+
+<li><a href="ted_init.html" class="refentry">ted_init</a> &#8212; <span class="refentry-description">Creation of a Timing Error Detector (TED)</span></li></ul></li>
+<li><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html" class="part">Equalization</a>
+<ul class="list-chapter"><li><a href="equalizer_init.html" class="refentry">equalizer_init</a> &#8212; <span class="refentry-description">Creation of an equalizer object (LMS, CMA, ...)</span></li>
+
+
+
+
+
+<li><a href="equalizer_process.html" class="refentry">equalizer_process</a> &#8212; <span class="refentry-description">Equalization of an input signal</span></li>
+
+
+
+
+
+<li><a href="equalizer_zfe.html" class="refentry">equalizer_zfe</a> &#8212; <span class="refentry-description">Zero-forcing equalizer (ZFE) FIR filter computation</span></li></ul></li>
+<li><a href="section_26b0d8d0858721741e04e5ee32cfcf28.html" class="part">Graphics</a>
+<ul class="list-chapter"><li><a href="plot_ber.html" class="refentry">plot_ber</a> &#8212; <span class="refentry-description">Plot Bit Error Rate (BER) in log domain</span></li>
+
+
+
+
+
+<li><a href="plot_binary.html" class="refentry">plot_binary</a> &#8212; <span class="refentry-description">Plot a binary stream</span></li>
+
+
+
+
+
+<li><a href="plot_const.html" class="refentry">plot_const</a> &#8212; <span class="refentry-description">Plot a scatter plot or a theorical constellation diagram</span></li>
+
+
+
+
+
+<li><a href="plot_demod.html" class="refentry">plot_demod</a> &#8212; <span class="refentry-description">Plot the demodulation intermediate computing</span></li>
+
+
+
+
+
+<li><a href="plot_eye.html" class="refentry">plot_eye</a> &#8212; <span class="refentry-description">Plot the eye diagram</span></li>
+
+
+
+
+
+<li><a href="plot_psd.html" class="refentry">plot_psd</a> &#8212; <span class="refentry-description">Plot Power Spectral Density (psd)</span></li>
+
+
+
+
+
+<li><a href="plot_rimp.html" class="refentry">plot_rimp</a> &#8212; <span class="refentry-description">Plotting of impulsionnal response of a FIR filter</span></li>
+
+
+
+
+
+<li><a href="plot_scurve.html" class="refentry">plot_scurve</a> &#8212; <span class="refentry-description">Plot the S-curve of a timing error detector (TED)</span></li></ul></li>
+<li><a href="section_99a2b1238f0d0ab4defdd7466ccda431.html" class="part">Theorical limits</a>
+<ul class="list-chapter"><li><a href="berask.html" class="refentry">berask</a> &#8212; <span class="refentry-description">k = log2(M);</span></li>
+
+
+
+
+
+<li><a href="berawgn.html" class="refentry">berawgn</a> &#8212; <span class="refentry-description">Error Rate For Additive White Gaussian Channel</span></li>
+
+
+
+
+
+<li><a href="berpsk.html" class="refentry">berpsk</a> &#8212; <span class="refentry-description"></span></li>
+
+
+
+
+
+<li><a href="berqam.html" class="refentry">berqam</a> &#8212; <span class="refentry-description"></span></li>
+
+
+
+
+
+<li><a href="channel_capacity.html" class="refentry">channel_capacity</a> &#8212; <span class="refentry-description">Channel capacity</span></li></ul></li>
+<li><a href="section_ea5d3b3259a8143aff5c5cf459aef45a.html" class="part">Miscealenous</a>
+<ul class="list-chapter"><li><a href="iir1_design.html" class="refentry">iir1_design</a> &#8212; <span class="refentry-description">Design of a single pole lowpass IIR filter.</span></li>
+
+
+
+
+
+<li><a href="sct_test_signal.html" class="refentry">sct_test_signal</a> &#8212; <span class="refentry-description">Test signal n°1 : Generate a 2 ms (2000 samples) BPSK signal, sampled at 1 MHz, with IF at 200 KHz and symbol frequency of 10 kbps.</span></li></ul></li>
+<li><a href="section_045ffda6ca4e60e6b243876d576c2e8b.html" class="part">Modulation / demodulation</a>
+<ul class="list-chapter"><li><a href="demod_init.html" class="refentry">demod_init</a> &#8212; <span class="refentry-description">Initialization of a demodulator object.</span></li>
+
+
+
+
+
+<li><a href="demod_process.html" class="refentry">demod_process</a> &#8212; <span class="refentry-description">Complete demodulation chain implementation (from a RF or IF signal to a binary sequence).</span></li>
+
+
+
+
+
+<li><a href="mod_init.html" class="refentry">mod_init</a> &#8212; <span class="refentry-description">Creation of a modulator</span></li>
+
+
+
+
+
+<li><a href="mod_process.html" class="refentry">mod_process</a> &#8212; <span class="refentry-description">Modulation (binary vector to RF or IF output)</span></li>
+
+
+
+
+
+<li><a href="wf_init.html" class="refentry">wf_init</a> &#8212; <span class="refentry-description">Initialization of a waveform object</span></li>
+
+
+
+
+
+<li><a href="wf_set_filter.html" class="refentry">wf_set_filter</a> &#8212; <span class="refentry-description">Specification of the pulse shaping filter for a waveform</span></li></ul></li>
+<li><a href="section_60d8ccc17e94b667fb32a49729c79eec.html" class="part">Filtering and pulse shaping</a>
+<ul class="list-chapter"><li><a href="section_30e015e4f9a4ef2071b1f8b6436043bb.html" class="chapter">Filters</a>
+<ul class="list-refentry"><li><a href="gaussian_fir.html" class="refentry">gaussian_fir</a> &#8212; <span class="refentry-description">FIR approximation of gaussian filter</span></li>
+
+
+
+
+
+<li><a href="gaussian_pulse.html" class="refentry">gaussian_pulse</a> &#8212; <span class="refentry-description">Gaussian pulse</span></li>
+
+
+
+
+
+<li><a href="rc_fir.html" class="refentry">rc_fir</a> &#8212; <span class="refentry-description">FIR approximation of raised cosine filter</span></li>
+
+
+
+
+
+<li><a href="rc_pulse.html" class="refentry">rc_pulse</a> &#8212; <span class="refentry-description">Raised cosine pulse</span></li>
+
+
+
+
+
+<li><a href="srrc_fir.html" class="refentry">srrc_fir</a> &#8212; <span class="refentry-description">FIR approximation of Square Root Raised Cosine (SRRC) filter</span></li>
+
+
+
+
+
+<li><a href="srrc_pulse.html" class="refentry">srrc_pulse</a> &#8212; <span class="refentry-description">Square Root Raised Cosine pulse</span></li></ul></li>
+<li><a href="section_98b8e472faa6140ef7aa18e0c0497332.html" class="chapter">Others</a>
+<ul class="list-refentry"><li><a href="ma.html" class="refentry">ma</a> &#8212; <span class="refentry-description">Moving average filter</span></li>
+
+
+
+
+
+<li><a href="nrz.html" class="refentry">nrz</a> &#8212; <span class="refentry-description">NRZ pulse shaping</span></li>
+
+
+
+
+
+<li><a href="pam.html" class="refentry">pam</a> &#8212; <span class="refentry-description">Pulse Amplitude Modulation (PAM)</span></li>
+
+
+
+
+
+<li><a href="rectpulse.html" class="refentry">rectpulse</a> &#8212; <span class="refentry-description">n1 = length(x);</span></li></ul></li>
+
+
+
+
+<li><a href="downsample.html" class="refentry">downsample</a> &#8212; <span class="refentry-description">Downsample the input signal by the factor <code class="varname">osf</code>.</span></li>
+
+
+
+
+
+<li><a href="psfilter_init.html" class="refentry">psfilter_init</a> &#8212; <span class="refentry-description">Creation of a pulse shaping filter</span></li>
+
+
+
+
+
+<li><a href="psfilter_process.html" class="refentry">psfilter_process</a> &#8212; <span class="refentry-description">Filter the input signal with a pulse shaping filter</span></li>
+
+
+
+
+
+<li><a href="symdemap.html" class="refentry">symdemap</a> &#8212; <span class="refentry-description">Maps a binary sequence to a symbol sequence with binary or gray encoding</span></li>
+
+
+
+
+
+<li><a href="symmap.html" class="refentry">symmap</a> &#8212; <span class="refentry-description">Maps a symbol sequence to a binary sequence with binary or gray encoding</span></li>
+
+
+
+
+
+<li><a href="upsample.html" class="refentry">upsample</a> &#8212; <span class="refentry-description">Upsample the input signal by the factor <code class="varname">osf</code>.</span></li></ul></li>
+<li><a href="section_9ead878fcafd3686b5482d1be5035e14.html" class="part">Channel simulation</a>
+<ul class="list-chapter"><li><a href="awgn.html" class="refentry">awgn</a> &#8212; <span class="refentry-description">Simulation of channel with Additive White Gaussian Noise (AWGN)</span></li>
+
+
+
+
+
+<li><a href="fading_chn_init.html" class="refentry">fading_chn_init</a> &#8212; <span class="refentry-description">Initialization of a fading channel object</span></li>
+
+
+
+
+
+<li><a href="fading_chn_process.html" class="refentry">fading_chn_process</a> &#8212; <span class="refentry-description">Simulation of a fading channel (Rayleigh or Rice model)</span></li>
+
+
+
+
+
+<li><a href="iqi_simu.html" class="refentry">iqi_simu</a> &#8212; <span class="refentry-description">Simulation of I/Q imbalance</span></li>
+
+
+
+
+
+<li><a href="thnoise_power.html" class="refentry">thnoise_power</a> &#8212; <span class="refentry-description">Compute thermal noise power</span></li></ul></li>
+<li><a href="section_913ad9193850135a073d0cc79b5826c3.html" class="part">Symbol generation</a>
+<ul class="list-chapter"><li><a href="section_41f6cdc6aefcb578ac42e416436c3634.html" class="chapter">Linear Feedback State Register (LFSR)</a>
+<ul class="list-refentry"><li><a href="lfsr_init.html" class="refentry">lfsr_init</a> &#8212; <span class="refentry-description">Initialize a LFSR register object</span></li>
+
+
+
+
+
+<li><a href="lfsr_process.html" class="refentry">lfsr_process</a> &#8212; <span class="refentry-description">Compute a random binary sequence with a LFSR register object</span></li>
+
+
+
+
+
+<li><a href="lfsr_rx_init.html" class="refentry">lfsr_rx_init</a> &#8212; <span class="refentry-description">Initialization of a LFSR receiver</span></li>
+
+
+
+
+
+<li><a href="lfsr_rx_process.html" class="refentry">lfsr_rx_process</a> &#8212; <span class="refentry-description">LFSR receiver implementation</span></li>
+
+
+
+
+
+<li><a href="lfsr_rx_reset.html" class="refentry">lfsr_rx_reset</a> &#8212; <span class="refentry-description">Reset a LFSR receiver</span></li>
+
+
+
+
+
+<li><a href="lfsr_rx_status.html" class="refentry">lfsr_rx_status</a> &#8212; <span class="refentry-description">locked = (lfsr.state == 1);</span></li></ul></li>
+
+
+
+
+<li><a href="prbs.html" class="refentry">prbs</a> &#8212; <span class="refentry-description">Generation of a pseudo-random number sequence</span></li>
+
+
+
+
+
+<li><a href="ts01.html" class="refentry">ts01</a> &#8212; <span class="refentry-description">Generation of a periodic 01010101... sequence</span></li></ul></li>
+<li><a href="section_e35ce050228da3ab350983f4001e30c1.html" class="part">User interface</a>
+<ul class="list-chapter"><li><a href="wfselector.html" class="refentry">wfselector</a> &#8212; <span class="refentry-description">User interface for waveform selection</span></li></ul></li></ul>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	
+      </td>
+      <td width="40%" class="center">
+      	
+      </td>
+      <td width="30%" class="next">
+      	
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

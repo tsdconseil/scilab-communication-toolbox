@@ -1,0 +1,84 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>scurve</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="resample.html">&lt;&lt; resample</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="ted_init.html">ted_init &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a> &gt; scurve</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">scurve</h1>
+    <p class="refpurpose">Compute the S-curve of a Timing Error Detector (ted)</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">[</span><span class="default">tau</span><span class="default">,</span><span class="default">s</span><span class="default">] = </span><span class="functionid">scurve</span><span class="default">(</span><span class="default">ted</span><span class="default">[, </span><span class="default">mode</span><span class="default"> = </span>&#0039;<span class="default">s</span>&#0039;<span class="default"> | </span>&#0039;<span class="default">gain</span>&#0039;<span class="default"> | </span>&#0039;<span class="default">dc</span>&#0039;<span class="default">])</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">ted:</span>
+      <dd><p class="para">timing error detector object</p></dd></dt>
+   <dt><span class="term">mode:</span>
+      <dd><p class="para">&#0039;s&#0039; for standard S-curve, &#0039;gain&#0039; for S-curve with input gain perturbation, or &#0039;dc&#0039; for S-curve with input-offset perturbation.</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Compute the S-curve of the specified TED, e.g. ted = f(tau)</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabopenclose">[</span><span class="scilabid">tau</span><span class="scilabdefault">,</span><span class="scilabid">s</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">scurve</span><span class="scilabopenclose">(</span><span class="scilabid">ted_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">gardner</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabmacro" href="scilab://plot">plot</a><span class="scilabopenclose">(</span><span class="scilabid">tau</span><span class="scilabdefault">,</span><span class="scilabid">s</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="ted_init.html" class="link">ted_init</a></li>
+   <li class="member"><a href="plot_scurve.html" class="link">plot_scurve</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available at http://www.tsdconseil.fr/log/sct</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="resample.html">&lt;&lt; resample</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="ted_init.html">ted_init &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

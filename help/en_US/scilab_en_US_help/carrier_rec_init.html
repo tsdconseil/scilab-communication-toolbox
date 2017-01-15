@@ -1,0 +1,81 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>carrier_rec_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_f94753725ca926e48269b81a1c9e8803.html">&lt;&lt; Carrier recovery</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="carrier_rec_process.html">carrier_rec_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a> &gt; carrier_rec_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">carrier_rec_init</h1>
+    <p class="refpurpose">Initialization of a carrier recovery loop object</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">cr</span><span class="default"> = </span><span class="functionid">carrier_rec_init</span><span class="default">(</span><span class="default">ped</span><span class="default">[, </span><span class="default">lf</span><span class="default">])</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">ped:</span>
+      <dd><p class="para">phase error detector object</p></dd></dt>
+   <dt><span class="term">lf:</span>
+      <dd><p class="para">loop filter object (if not specified, the default is a first order loop, with time constant of 10 samples)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Initialize a carrier recovery loop, using a given Phase Error Detector (ped) and Loop Filter (lf). For example, so a to recover the carrier of a BPSK signal, one can use <a href="scilab://ped_psk" class="link">ped_psk</a> as a phase error detector, and <a href="lf_init.html" class="link">lf_init</a> (first or second order loop) as a loop filter.</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="carrier_rec_process.html" class="link">carrier_rec_process</a></li>
+   <li class="member"><a href="lf_init.html" class="link">lf_init</a></li>
+   <li class="member"><a href="scilab://ped_psk" class="link">ped_psk</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., software published under CeCILL-C license (open source), full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_f94753725ca926e48269b81a1c9e8803.html">&lt;&lt; Carrier recovery</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="carrier_rec_process.html">carrier_rec_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

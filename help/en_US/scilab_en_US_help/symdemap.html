@@ -1,0 +1,88 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>symdemap</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="psfilter_process.html">&lt;&lt; psfilter_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="symmap.html">symmap &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a> &gt; symdemap</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">symdemap</h1>
+    <p class="refpurpose">Maps a symbol sequence to a binary sequence with binary or gray decoding</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">b</span><span class="default"> = </span><span class="functionid">symdemap</span><span class="default">(</span><span class="default">x</span><span class="default">,</span><span class="default">k</span><span class="default">[,</span><span class="default">enc</span><span class="default">])</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">x:</span>
+      <dd><p class="para">Input symbol vector (real or complex, depending on the encoding)</p></dd></dt>
+   <dt><span class="term">k:</span>
+      <dd><p class="para">Number of bits / symbol</p></dd></dt>
+   <dt><span class="term">enc:</span>
+      <dd><p class="para">Specify binary (&#0039;b&#0039;, default), qam (&#0039;q&#0039;), or phase (&#0039;p&#0039;) encoding</p></dd></dt>
+   <dt><span class="term">b:</span>
+      <dd><p class="para">Output binary sequence (a vector of 0 and 1)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Maps a symbol sequence to a binary sequence (sequence of 0 or 1), using one of the following possible encodings:
+<ul class="itemizedlist"><li><b>Binary encoding (PAM / NRZ)</b> / <code class="varname">enc = &#0039;b&#0039;</code>: produces a vector of real symbols, uniformly distribued between -1 and 1 (if k = 2, only -1 and 1 are produced, e.g. NRZ encoding).</li>
+<li><b>Phase encoding (PSK)</b> / <code class="varname">enc = &#0039;p&#0039;</code>: produces complex symbols of unit magnitude and uniformly distribued phase between 0 and <span><img src='./_LaTeX_symdemap.xml_1.png' style='position:relative;top:2px;width:22px;height:15px'/></span> radians (for k = 1 bit/symbol, this is BPSK, which symbols are identical to NRZ, for k = 2 bits/symbol, this is QPSK, ...).</li>
+<li><b>Quadrature amplitude Encoding (QAM)</b> / <code class="varname">enc = &#0039;q&#0039;</code>: produces complex symbols where real and imaginary parts of the signal are independently modulated using each one half of the bitstream.</li></ul></p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">b</span> <span class="scilaboperator">=</span> <span class="scilabid">symdemap</span><span class="scilabopenclose">(</span><span class="scilabopenclose">[</span><span class="scilaboperator">-</span><span class="scilabnumber">1</span> <span class="scilabnumber">1</span> <span class="scilabnumber">1</span> <span class="scilaboperator">-</span><span class="scilabnumber">1</span><span class="scilabopenclose">]</span><span class="scilabdefault">,</span> <span class="scilabnumber">1</span><span class="scilabdefault">,</span> <span class="scilabstring">&#0039;</span><span class="scilabstring">b</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span> <span class="scilabcomment">// NRZ decoding</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="symmap.html" class="link">symmap</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="psfilter_process.html">&lt;&lt; psfilter_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="symmap.html">symmap &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

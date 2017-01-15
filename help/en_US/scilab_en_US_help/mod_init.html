@@ -1,0 +1,99 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>mod_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="demod_process.html">&lt;&lt; demod_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_045ffda6ca4e60e6b243876d576c2e8b.html">Modulation / demodulation</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="mod_process.html">mod_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_045ffda6ca4e60e6b243876d576c2e8b.html">Modulation / demodulation</a> &gt; mod_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">mod_init</h1>
+    <p class="refpurpose">Creation of a modulator object</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">mod</span><span class="default"> = </span><span class="functionid">mod_init</span><span class="default">(</span><span class="default">name</span><span class="default">,</span><span class="default">fs</span><span class="default">,</span><span class="default">fi</span><span class="default">,</span><span class="default">fsymb</span><span class="default">[,</span><span class="default">mode</span><span class="default">])</span>
+<span class="default">mod</span><span class="default"> = </span><span class="functionid">mod_init</span><span class="default">(</span><span class="default">wf</span><span class="default">,</span><span class="default">fs</span><span class="default">,</span><span class="default">fi</span><span class="default">,</span><span class="default">fsymb</span><span class="default">[,</span><span class="default">mode</span><span class="default">])</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">name:</span>
+      <dd><p class="para">Waveform name (&#0039;bpsk&#0039;, &#0039;qpsk&#0039;, &#0039;qam16&#0039;, ...: same parameter as <a href="wf_init.html" class="link">wf_init</a>)</p></dd></dt>
+   <dt><span class="term">wf:</span>
+      <dd><p class="para">Waveform object (created with <a href="wf_init.html" class="link">wf_init</a>)</p></dd></dt>
+   <dt><span class="term">fs:</span>
+      <dd><p class="para">Output sample frequency (in Hz)</p></dd></dt>
+   <dt><span class="term">fi:</span>
+      <dd><p class="para">Output intermediate (or RF) frequency (in Hz)</p></dd></dt>
+   <dt><span class="term">fsymb:</span>
+      <dd><p class="para">Symbol frequency (in Hz)</p></dd></dt>
+   <dt><span class="term">mode:</span>
+      <dd><p class="para">Real modulation (&#0039;r&#0039;) or I/Q modulation (&#0039;c&#0039;). Default is real modulation.</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">In the first form, the default waveform configuration is used (NRZ pulse shaping, and default waveform parameters). In the second form, the user can configure more accurately the waveform.</p></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// QPSK modulator, NRZ pulse shaping,</span>
+<span class="scilabcomment">// sampling frequency = 1 MHz, IF = 200 KHz, FSYMB = 20 KHz</span>
+<span class="scilabid">mod</span> <span class="scilaboperator">=</span> <span class="scilabid">mod_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">qpsk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span> <span class="scilabnumber">1e6</span><span class="scilabdefault">,</span> <span class="scilabnumber">200e3</span><span class="scilabdefault">,</span> <span class="scilabnumber">20e3</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+
+<span class="scilabcomment">// BPSK modulator, SRRC pulse shaping (r = 0.2), same frequencies</span>
+<span class="scilabid">wf</span>  <span class="scilaboperator">=</span> <span class="scilabid">wf_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">bpsk</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">wf</span>  <span class="scilaboperator">=</span> <span class="scilabid">wf_set_filter</span><span class="scilabopenclose">(</span><span class="scilabid">wf</span><span class="scilabdefault">,</span> <span class="scilabstring">&#0039;</span><span class="scilabstring">srrc</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span> <span class="scilabnumber">0.2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">mod</span> <span class="scilaboperator">=</span> <span class="scilabid">mod_init</span><span class="scilabopenclose">(</span><span class="scilabid">wf</span><span class="scilabdefault">,</span> <span class="scilabnumber">1e6</span><span class="scilabdefault">,</span> <span class="scilabnumber">200e3</span><span class="scilabdefault">,</span> <span class="scilabnumber">20e3</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="mod_process.html" class="link">mod_process</a></li>
+   <li class="member"><a href="wf_init.html" class="link">wf_init</a></li>
+   <li class="member"><a href="wf_set_filter.html" class="link">wf_set_filter</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="demod_process.html">&lt;&lt; demod_process</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_045ffda6ca4e60e6b243876d576c2e8b.html">Modulation / demodulation</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="mod_process.html">mod_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

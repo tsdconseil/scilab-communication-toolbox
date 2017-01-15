@@ -1,0 +1,101 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>berawgn</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_99a2b1238f0d0ab4defdd7466ccda431.html">&lt;&lt; Theorical limits</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_99a2b1238f0d0ab4defdd7466ccda431.html">Theorical limits</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="channel_capacity.html">channel_capacity &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_99a2b1238f0d0ab4defdd7466ccda431.html">Theorical limits</a> &gt; berawgn</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">berawgn</h1>
+    <p class="refpurpose">Computes Bit Error Rate (ber) for Additive White Gaussian Noise (AWGN) channel</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">ber</span><span class="default"> = </span><span class="functionid">berawgn</span><span class="default">(</span><span class="default">wf</span><span class="default">,</span><span class="default">ebno</span><span class="default">)</span>
+<span class="default">ber</span><span class="default"> = </span><span class="functionid">berawgn</span><span class="default">(</span><span class="default">type</span><span class="default">,</span><span class="default">ebno</span><span class="default">[,</span><span class="default">M</span><span class="default">[,</span><span class="default">opt</span><span class="default">]])</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">wf:</span>
+      <dd><p class="para">Waveform object (see <a href="wf_init.html" class="link">wf_init</a>)</p></dd></dt>
+   <dt><span class="term">ebno:</span>
+      <dd><p class="para">Eb/No, in dB (a vector or a single value)</p></dd></dt>
+   <dt><span class="term">type:</span>
+      <dd><p class="para">Waveform type (&#0039;ask&#0039;,&#0039;qam&#0039;,&#0039;psk&#0039;,&#0039;qpsk&#0039;,&#0039;dpsk&#0039;,&#0039;oqpsk&#0039;,&#0039;fsk&#0039;,...)</p></dd></dt>
+   <dt><span class="term">M:</span>
+      <dd><p class="para">Number of symbols used in transmission (default is 2). It is integer power of 2 and one among 2,4,8,16,32</p></dd></dt>
+   <dt><span class="term">opt:</span>
+      <dd><p class="para">&#0039;c&#0039; (coherent demodulation) or &#0039;i&#0039; (incoherent)</p></dd></dt>
+   <dt><span class="term">ber:</span>
+      <dd><p class="para">Resulting Bit Error Rate vector (one value for each valeu of Eb/N0)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">When symbols are transmitted over communication channel having additive white gaussian noise then probability of error for the received symbols is given by this function. For case of &#0039;fsk&#0039; correlation among the carriers and method used for detection at receiver which is coherent or noncoherent also needs to be specified. This function returns an array having same size as the size of array containing Eb/No values.</p>
+   <p class="para"><div class="refsection"><h3 class="title">Note</h3></div>
+The original code for this function has been written by:
+Vinayak Chandra Sharma (Department of Electrical Engineering, IIT Bombay),
+guided by prof. Saravanan Vijayakumaran</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">ber</span> <span class="scilaboperator">=</span> <span class="scilabid">berawgn</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">psk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabspecial">:</span><span class="scilabnumber">10</span><span class="scilabdefault">,</span><span class="scilabnumber">8</span><span class="scilabopenclose">)</span> <span class="scilabcomment">// 8-PSK</span>
+<span class="scilabid">ber</span> <span class="scilaboperator">=</span> <span class="scilabid">berawgn</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">fsk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabspecial">:</span><span class="scilabnumber">10</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabstring">&#0039;</span><span class="scilabstring">c</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span>  <span class="scilabcomment">// 2-FSK, coherent demodulation</span>
+<span class="scilabid">ber</span> <span class="scilaboperator">=</span> <span class="scilabid">berawgn</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">fsk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabspecial">:</span><span class="scilabnumber">10</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabstring">&#0039;</span><span class="scilabstring">i</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span>  <span class="scilabcomment">// 2-FSK, incoherent demodulation</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="channel_capacity.html" class="link">channel_capacity</a></li>
+   <li class="member"><a href="wf_init.html" class="link">wf_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">Original code:</li>
+   <li class="member">Vinayak Chandra Sharma (Department of Electrical Engineering, IIT Bombay),</li>
+   <li class="member">Guided by prof. Saravanan Vijayakumaran</li>
+   <li class="member">With modifications by J.A.</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_99a2b1238f0d0ab4defdd7466ccda431.html">&lt;&lt; Theorical limits</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_99a2b1238f0d0ab4defdd7466ccda431.html">Theorical limits</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="channel_capacity.html">channel_capacity &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

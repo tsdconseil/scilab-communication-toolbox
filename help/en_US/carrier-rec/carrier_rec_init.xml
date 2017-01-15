@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from carrier_rec_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="carrier_rec_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>carrier_rec_init</refname>
+    <refpurpose>Initialization of a carrier recovery loop object</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   cr = carrier_rec_init(ped[, lf])
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>ped:</term>
+      <listitem><para> phase error detector object</para></listitem></varlistentry>
+   <varlistentry><term>lf:</term>
+      <listitem><para> loop filter object (if not specified, the default is a first order loop, with time constant of 10 samples)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Initialize a carrier recovery loop, using a given Phase Error Detector (ped) and Loop Filter (lf). For example, so a to recover the carrier of a BPSK signal, one can use <link linkend="ped_psk">ped_psk</link> as a phase error detector, and <link linkend="lf_init">lf_init</link> (first or second order loop) as a loop filter.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="carrier_rec_process">carrier_rec_process</link></member>
+   <member><link linkend="lf_init">lf_init</link></member>
+   <member><link linkend="ped_psk">ped_psk</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., software published under CeCILL-C license (open source), full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

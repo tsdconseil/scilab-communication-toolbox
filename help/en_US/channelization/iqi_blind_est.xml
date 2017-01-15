@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from iqi_blind_est.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="iqi_blind_est" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>iqi_blind_est</refname>
+    <refpurpose>I/Q imbalance blind estimation</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [g,phi] = iqi_blind_est(x)
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>x:</term>
+      <listitem><para> received I/Q signal (complex)</para></listitem></varlistentry>
+   <varlistentry><term>g:</term>
+      <listitem><para> estimation of gain imbalance</para></listitem></varlistentry>
+   <varlistentry><term>phi:</term>
+      <listitem><para> estimation of phase imbalance</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Compute I/Q imbalance parameters to fit the model:
+   </para>
+   <para>
+<latex>$$x_n = s_n \left(\cos(\omega t) + ig\sin(\omega t + \phi)\right)$$</latex>
+   </para>
+   <para>
+with <latex>$s_n$</latex> being the the rf signal, g the gain imbalance, and <latex>$\phi$</latex> the phase imbalance.
+   </para>
+   <para>
+See a complete example in the documentation of the <link linkend="iqi_cor">iqi_cor</link> function.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="iqi_cor">iqi_cor</link></member>
+   <member><link linkend="iqi_irr">iqi_irr</link></member>
+   <member><link linkend="iqi_simu">iqi_simu</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available at http://www.tsdconseil.fr/log/sct</member>
+   </simplelist>
+</refsection>
+</refentry>

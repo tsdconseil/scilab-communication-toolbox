@@ -1,0 +1,93 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>wf_set_filter</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="wf_init.html">&lt;&lt; wf_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_045ffda6ca4e60e6b243876d576c2e8b.html">Modulation / demodulation</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_045ffda6ca4e60e6b243876d576c2e8b.html">Modulation / demodulation</a> &gt; wf_set_filter</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">wf_set_filter</h1>
+    <p class="refpurpose">Specification of the pulse shaping filter for a waveform</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">wf</span><span class="default"> = </span><span class="functionid">wf_set_filter</span><span class="default">(</span><span class="default">wf</span><span class="default">, </span>&#0039;<span class="default">none</span>&#0039;<span class="default">);</span>
+<span class="default">wf</span><span class="default"> = </span><span class="functionid">wf_set_filter</span><span class="default">(</span><span class="default">wf</span><span class="default">, </span>&#0039;<span class="default">nrz</span>&#0039;<span class="default">);</span>
+<span class="default">wf</span><span class="default"> = </span><span class="functionid">wf_set_filter</span><span class="default">(</span><span class="default">wf</span><span class="default">, </span>&#0039;<span class="default">rc</span>&#0039;<span class="default">, </span><span class="default">ntaps</span><span class="default">, </span><span class="default">roll_off</span><span class="default">);</span>
+<span class="default">wf</span><span class="default"> = </span><span class="functionid">wf_set_filter</span><span class="default">(</span><span class="default">wf</span><span class="default">, </span>&#0039;<span class="default">srrc</span>&#0039;<span class="default">, </span><span class="default">ntaps</span><span class="default">, </span><span class="default">roll_off</span><span class="default">);</span>
+<span class="default">wf</span><span class="default"> = </span><span class="functionid">wf_set_filter</span><span class="default">(</span><span class="default">wf</span><span class="default">, </span>&#0039;<span class="default">gaussian</span>&#0039;<span class="default">, </span><span class="default">ntaps</span><span class="default">, </span><span class="default">BT</span><span class="default">);</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">roll_off:</span>
+      <dd><p class="para">Roll-off factor (for RC / SRRC filters)</p></dd></dt>
+   <dt><span class="term">BT:</span>
+      <dd><p class="para">Bandwidth-time product (for gaussian filter)</p></dd></dt>
+   <dt><span class="term">ntaps:</span>
+      <dd><p class="para">Number of taps of the FIR filter (for implementation of RC, SRRC or Gaussian filters)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Note that if a gaussian filter is specified, actually what is implemented
+is the convolution of a gaussian filter with a moving average filter (of length given
+by the symbol period), or, saying it another way, the gaussian filter is applied
+to a signal preformated using NRZ.</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">wf</span> <span class="scilaboperator">=</span> <span class="scilabid">wf_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">bpsk</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabcomment">// Default pulse shaping is NRZ</span>
+<span class="scilabcomment">// Change it to SRRC (with a roll-off of 0.2)</span>
+<span class="scilabid">wf</span> <span class="scilaboperator">=</span> <span class="scilabid">wf_set_filter</span><span class="scilabopenclose">(</span><span class="scilabid">wf</span><span class="scilabdefault">,</span> <span class="scilabstring">&#0039;</span><span class="scilabstring">srrc</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span> <span class="scilabnumber">0.2</span><span class="scilabopenclose">)</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="wf_init.html" class="link">wf_init</a></li>
+   <li class="member"><a href="scilab://ps_filter_init" class="link">ps_filter_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="wf_init.html">&lt;&lt; wf_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_045ffda6ca4e60e6b243876d576c2e8b.html">Modulation / demodulation</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

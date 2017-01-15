@@ -1,0 +1,92 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>chn_simu_prm</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="chn_simu.html">&lt;&lt; chn_simu</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_9ead878fcafd3686b5482d1be5035e14.html">Channel simulation</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="cmp_bits.html">cmp_bits &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_9ead878fcafd3686b5482d1be5035e14.html">Channel simulation</a> &gt; chn_simu_prm</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">chn_simu_prm</h1>
+    <p class="refpurpose">Radio channel simulation (noise, phase error, frequency error, ...)</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">prm</span><span class="default"> = </span><span class="functionid">chn_simu_prm</span><span class="default">();</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">prm:</span>
+      <dd><p class="para">Resulting structure defining the channel parameters.</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">This function enables to initialize the field of a structure defining which distortions
+to use when simulating a radio
+propagation channel with the <a href="chn_simu.html" class="link">chn_simu</a> function.
+By default, all channel distortions are disabled. One can activate them selectivly by
+modifying the following fields:
+<ul class="itemizedlist"><li><b>White noise:</b> <code class="varname">prm.sigma_wn</code> = standard deviation of the white noise.</li>
+<li><b>Time shift:</b> <code class="varname">prm.delta_t</code> = timing offset between receiver and transmitter clock (in samples).</li>
+<li><b>Frequency offset:</b> <code class="varname">prm.freq_offset</code> = frequency offset (compared to expected carrier frequency).</li>
+<li><b>Phase offset:</b> <code class="varname">prm.phase_offset</code> = carrier phase offset (in radians).</li></ul>
+Note: TODO : complete with other possible source of distortions (selective channel, I/Q imbalance, clock offset, ...)</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// Default channel configuration</span>
+<span class="scilabid">prm</span> <span class="scilaboperator">=</span> <span class="scilabid">chn_simu_prm</span><span class="scilabopenclose">(</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Add white noise (sigma = 0.1)</span>
+<span class="scilabid">prm</span><span class="scilaboperator">.</span><span class="scilabfield">sigma_wn</span> <span class="scilaboperator">=</span> <span class="scilabnumber">0.1</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="chn_simu.html" class="link">chn_simu</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available at http://www.tsdconseil.fr/log/sct</li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="chn_simu.html">&lt;&lt; chn_simu</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_9ead878fcafd3686b5482d1be5035e14.html">Channel simulation</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="cmp_bits.html">cmp_bits &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

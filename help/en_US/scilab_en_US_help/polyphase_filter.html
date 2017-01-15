@@ -1,0 +1,80 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>polyphase_filter</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="polyphase_decimation.html">&lt;&lt; polyphase_decimation</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="polyphase_form.html">polyphase_form &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a> &gt; polyphase_filter</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">polyphase_filter</h1>
+    <p class="refpurpose">Creation of a polyphase decimation filter structure</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">H</span><span class="default"> = </span><span class="functionid">polyphase_filter</span><span class="default">(</span><span class="default">h</span><span class="default">,</span><span class="default">m</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">h:</span>
+      <dd><p class="para">FIR filter coefficients (1d vector)</p></dd></dt>
+   <dt><span class="term">m:</span>
+      <dd><p class="para">number of polyphase branches e.g. decimation ratio</p></dd></dt>
+   <dt><span class="term">H:</span>
+      <dd><p class="para">resulting polyphase matrix form</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Creation of the polyphase matrix. The filter is decomposed into m
+phases sub-filters (m rows of the H matrix). Each sub-filter can
+process a decimated version of the input signal, with a different phase.</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="polyphase_decimation.html">&lt;&lt; polyphase_decimation</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="polyphase_form.html">polyphase_form &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

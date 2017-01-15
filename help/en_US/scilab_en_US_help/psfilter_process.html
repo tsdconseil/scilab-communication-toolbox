@@ -1,0 +1,96 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>psfilter_process</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="psfilter_init.html">&lt;&lt; psfilter_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="symdemap.html">symdemap &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a> &gt; psfilter_process</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">psfilter_process</h1>
+    <p class="refpurpose">Filter the input signal with a pulse shaping filter</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">[</span><span class="default">psf</span><span class="default">,</span><span class="default">y</span><span class="default">] = </span><span class="functionid">psfilter_process</span><span class="default">(</span><span class="default">psf</span><span class="default">, </span><span class="default">x</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">psf:</span>
+      <dd><p class="para">Pulse-shaping filter object (as can be created with <a href="psfilter_init.html" class="link">psfilter_init</a>)</p></dd></dt>
+   <dt><span class="term">x:</span>
+      <dd><p class="para">Input signal</p></dd></dt>
+   <dt><span class="term">y:</span>
+      <dd><p class="para">Output signal (filtered)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Take as input a signal (already upsampled and constellation mapped), and apply a pulse shaping filter.</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// Gaussian filter, 16 samples/symbol, 3*16 taps FIR, B.T. = 0.5</span>
+<span class="scilabid">osf</span> <span class="scilaboperator">=</span> <span class="scilabnumber">16</span><span class="scilabdefault">;</span>
+<span class="scilabid">ntaps</span> <span class="scilaboperator">=</span> <span class="scilabnumber">3</span> <span class="scilaboperator">*</span> <span class="scilabid">osf</span><span class="scilabdefault">;</span>
+<span class="scilabid">BT</span> <span class="scilaboperator">=</span> <span class="scilabnumber">0.5</span><span class="scilabdefault">;</span>
+<span class="scilabid">psf</span> <span class="scilaboperator">=</span> <span class="scilabid">psfilter_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">g</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span> <span class="scilabid">osf</span><span class="scilabdefault">,</span> <span class="scilabid">ntaps</span><span class="scilabdefault">,</span> <span class="scilabid">BT</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">b</span> <span class="scilaboperator">=</span> <span class="scilabid">prbs</span><span class="scilabopenclose">(</span><span class="scilabnumber">20</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabcomment">// Binary sequence to be encoded</span>
+<span class="scilabid">x</span> <span class="scilaboperator">=</span> <span class="scilabid">symmap</span><span class="scilabopenclose">(</span><span class="scilabid">b</span><span class="scilabdefault">,</span><span class="scilabnumber">1</span><span class="scilabdefault">,</span><span class="scilabstring">&#0039;</span><span class="scilabstring">b</span><span class="scilabstring">&#0039;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabcomment">// NRZ encoding</span>
+<span class="scilabid">x</span> <span class="scilaboperator">=</span> <span class="scilabid">upsample</span><span class="scilabopenclose">(</span><span class="scilabid">x</span><span class="scilabdefault">,</span> <span class="scilabid">osf</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabopenclose">[</span><span class="scilabid">psf</span><span class="scilabdefault">,</span><span class="scilabid">y</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">psfilter_process</span><span class="scilabopenclose">(</span><span class="scilabid">psf</span><span class="scilabdefault">,</span><span class="scilabid">x</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabmacro" href="scilab://clf">clf</a><span class="scilabopenclose">(</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabmacro" href="scilab://subplot">subplot</a><span class="scilabopenclose">(</span><span class="scilabnumber">211</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <span class="scilabid">plot_binary</span><span class="scilabopenclose">(</span><span class="scilabid">b</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>  <a class="scilabcommand" href="scilab://xtitle">xtitle</a><span class="scilabopenclose">(</span><span class="scilabstring">&#0034;</span><span class="scilabstring">Input signal (binary)</span><span class="scilabstring">&#0034;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<a class="scilabmacro" href="scilab://subplot">subplot</a><span class="scilabopenclose">(</span><span class="scilabnumber">212</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabmacro" href="scilab://plot">plot</a><span class="scilabopenclose">(</span><span class="scilabid">y</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabcommand" href="scilab://xtitle">xtitle</a><span class="scilabopenclose">(</span><span class="scilabstring">&#0034;</span><span class="scilabstring">Filtered signal</span><span class="scilabstring">&#0034;</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div>
+<div class="mediaobject"><img src='./ex-psfilter_process.png'/><caption><b><p class="para">Example with Gaussian shaping filter</p></b></caption></div></p>
+   <p class="para"></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="psfilter_init.html" class="link">psfilter_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="psfilter_init.html">&lt;&lt; psfilter_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="symdemap.html">symdemap &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

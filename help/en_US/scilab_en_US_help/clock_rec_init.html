@@ -1,0 +1,92 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>clock_rec_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">&lt;&lt; Clock recovery</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="clock_rec_process.html">clock_rec_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a> &gt; clock_rec_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">clock_rec_init</h1>
+    <p class="refpurpose">Creation of a clock recovery object.</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">cr</span><span class="default"> = </span><span class="functionid">clock_rec_init</span><span class="default">(</span><span class="default">osf</span><span class="default">)</span>
+<span class="default">cr</span><span class="default"> = </span><span class="functionid">clock_rec_init</span><span class="default">(</span><span class="default">osf</span><span class="default">,</span><span class="default">ted</span><span class="default">,</span><span class="default">itrp</span><span class="default">,</span><span class="default">tc</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">osf:</span>
+      <dd><p class="para">Input signal oversampling factor (e.g. ratio of input signal frequency vs symbol frequency)</p></dd></dt>
+   <dt><span class="term">ted:</span>
+      <dd><p class="para">Timing error detector object (default is Gardner detector). A ted can be created with the <a href="ted_init.html" class="link">ted_init</a> function.</p></dd></dt>
+   <dt><span class="term">itrp:</span>
+      <dd><p class="para">Interpolator object (default is cardinal cubic spline interpolator). A interpolator can be created with the <a href="itrp_init.html" class="link">itrp_init</a> function.</p></dd></dt>
+   <dt><span class="term">tc:</span>
+      <dd><p class="para">Time constant of the loop, in symbols (default is 5 symbols)</p></dd></dt>
+   <dt><span class="term">cr:</span>
+      <dd><p class="para">Resulting clock recovery object</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">This function will create a clock recovery object, that can be used afterwards to resynchronize and resample an incoming NRZ stream with implicit clock.</p>
+   <p class="para">Optionnaly, the user can choose a specific Timing Error Detector (default is Gardner), and a specific interpolator (default is cardinal cubic spline).</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// Create a clock recovery object for an oversampling ratio of 8</span>
+<span class="scilabid">cr</span> <span class="scilaboperator">=</span> <span class="scilabid">clock_rec_init</span><span class="scilabopenclose">(</span><span class="scilabnumber">8</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="clock_rec_process.html" class="link">clock_rec_process</a></li>
+   <li class="member"><a href="ted_init.html" class="link">ted_init</a></li>
+   <li class="member"><a href="itrp_init.html" class="link">itrp_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">&lt;&lt; Clock recovery</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="clock_rec_process.html">clock_rec_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

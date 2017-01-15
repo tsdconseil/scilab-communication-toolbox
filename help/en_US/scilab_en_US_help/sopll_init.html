@@ -1,0 +1,85 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>sopll_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="ped_init.html">&lt;&lt; ped_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="sopll_reset.html">sopll_reset &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a> &gt; sopll_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">sopll_init</h1>
+    <p class="refpurpose">Initialize a second order PLL for carrier phase / frequency recovery</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">so</span><span class="default"> = </span><span class="functionid">sopll_init</span><span class="default">(</span><span class="default">BL</span><span class="default">, </span><span class="default">eta</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">BL:</span>
+      <dd><p class="para">Loop bandwidth, normalized to sample frequency</p></dd></dt>
+   <dt><span class="term">eta:</span>
+      <dd><p class="para">Damping factor</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">fs</span>  <span class="scilaboperator">=</span> <span class="scilabnumber">1e6</span><span class="scilabdefault">;</span>  <span class="scilabcomment">// 1 MHz sampling frequency</span>
+<span class="scilabid">BL</span>  <span class="scilaboperator">=</span> <span class="scilabnumber">10e3</span><span class="scilabdefault">;</span> <span class="scilabcomment">// 10 KHz loop bandwidth (e.g. ~ 100 samples to converge)</span>
+<span class="scilabid">eta</span> <span class="scilaboperator">=</span> <span class="scilabnumber">1</span><span class="scilabdefault">;</span>    <span class="scilabcomment">// Damping factor</span>
+<span class="scilabid">so</span> <span class="scilaboperator">=</span> <span class="scilabid">sopll_init</span><span class="scilabopenclose">(</span><span class="scilabid">BL</span><span class="scilaboperator">/</span><span class="scilabid">fs</span><span class="scilabdefault">,</span><span class="scilabid">eta</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="scilab://sopll_process" class="link">sopll_process</a></li>
+   <li class="member"><a href="sopll_reset.html" class="link">sopll_reset</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Bibliography</h3>
+   <p class="para">DVBS2 : <em>Carrier phase synchronization techniques for broadband satellite transmissions</em>, ESA, 2003</p></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="ped_init.html">&lt;&lt; ped_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="sopll_reset.html">sopll_reset &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

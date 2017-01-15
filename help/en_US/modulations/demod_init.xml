@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from demod_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="demod_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>demod_init</refname>
+    <refpurpose>Initialization of a demodulator object.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   demod = demod_init(name,fs,fi,fsymb)
+   demod = demod_init(wf,fs,fi,fsymb)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>name:</term>
+      <listitem><para> classical waveform name ('bpsk', 'qpsk', 'qam16', ...)</para></listitem></varlistentry>
+   <varlistentry><term>wf:</term>
+      <listitem><para> Waveform object (created with <link linkend="wf_init">wf_init</link>)</para></listitem></varlistentry>
+   <varlistentry><term>fs:</term>
+      <listitem><para> Input sample frequency</para></listitem></varlistentry>
+   <varlistentry><term>fi:</term>
+      <listitem><para> Intermediate (or RF) frequency</para></listitem></varlistentry>
+   <varlistentry><term>fsymb:</term>
+      <listitem><para> Symbol frequency</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// QPSK demodulator (NRZ matched filter),
+// sampling frequency = 1 MHz, IF = 200 KHz, FSYMB = 20 KHz
+demod = demod_init('qpsk', 1e6, 200e3, 20e3);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="demod_process">demod_process</link></member>
+   <member><link linkend="wf_init">wf_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

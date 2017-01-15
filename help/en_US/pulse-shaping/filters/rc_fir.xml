@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from rc_fir.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="rc_fir" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>rc_fir</refname>
+    <refpurpose>FIR approximation of raised cosine filter</refpurpose>
+  </refnamediv>
+
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>beta:</term>
+      <listitem><para> rool-off factor</para></listitem></varlistentry>
+   <varlistentry><term>osf:</term>
+      <listitem><para> over sampling factor</para></listitem></varlistentry>
+   <varlistentry><term>n:</term>
+      <listitem><para> number of coefficients of the FIR filter</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   y = rc_fir(r,osf,n)
+   y = rc_fir(r,osf,n,'sum')     Normalize the coefficients to have sum = 1 (default behavior)
+   y = rc_fir(r,osf,n,'energy')  Normalize the coefficients to preserve energy : <latex>$\sum_i(h_i^2) = 1$</latex>
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Description</title>
+   <para>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+h = rc_fir(r=0.5,osf=2,n=5);
+plot_rimp(h);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="rc_pulse">rc_pulse</link></member>
+   <member><link linkend="srrc_pulse">srrc_pulse</link></member>
+   <member><link linkend="srrc_fir">srrc_fir</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>Multirate signal processing for communication systems, F.J. Harris, page 89.</para>
+</refsection>
+</refentry>

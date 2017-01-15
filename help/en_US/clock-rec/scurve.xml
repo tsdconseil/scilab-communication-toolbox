@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from scurve.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="scurve" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>scurve</refname>
+    <refpurpose>Compute the S-curve of a Timing Error Detector (ted)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [tau,s] = scurve(ted[, mode = 's' | 'gain' | 'dc'])
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>ted:</term>
+      <listitem><para> timing error detector object</para></listitem></varlistentry>
+   <varlistentry><term>mode:</term>
+      <listitem><para> 's' for standard S-curve, 'gain' for S-curve with input gain perturbation, or 'dc' for S-curve with input-offset perturbation.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Compute the S-curve of the specified TED, e.g. ted = f(tau)
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+[tau,s] = scurve(ted_init('gardner'));
+plot(tau,s);
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="ted_init">ted_init</link></member>
+   <member><link linkend="plot_scurve">plot_scurve</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available at http://www.tsdconseil.fr/log/sct</member>
+   </simplelist>
+</refsection>
+</refentry>

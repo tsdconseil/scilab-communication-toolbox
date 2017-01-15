@@ -1,0 +1,109 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>clock_rec_process</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="clock_rec_init.html">&lt;&lt; clock_rec_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="delay_estim.html">delay_estim &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a> &gt; clock_rec_process</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">clock_rec_process</h1>
+    <p class="refpurpose">Proceed to clock recovery. Output signal y is resampled at symbol frequency and synchronized with the detected clock.</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">[</span><span class="default">cr</span><span class="default">,</span><span class="default">y</span><span class="default">] = </span><span class="functionid">clock_rec_process</span><span class="default">(</span><span class="default">cr</span><span class="default">,</span><span class="default">x</span><span class="default">[,</span><span class="default">coarse_rssi</span><span class="default">]);</span>
+<span class="default">[</span><span class="default">cr</span><span class="default">,</span><span class="default">y</span><span class="default">,</span><span class="default">dbg</span><span class="default">] = </span><span class="functionid">clock_rec_process</span><span class="default">(</span><span class="default">cr</span><span class="default">,</span><span class="default">x</span><span class="default">[,</span><span class="default">coarse_rssi</span><span class="default">]);</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">x:</span>
+      <dd><p class="para">Input signal, sampled at <code class="varname">osf</code> sample/symbol</p></dd></dt>
+   <dt><span class="term">cr:</span>
+      <dd><p class="para">Clock recovery object (can be created with <a href="clock_rec_init.html" class="link">clock_rec_init()</a>)</p></dd></dt>
+   <dt><span class="term">coarse_rssi:</span>
+      <dd><p class="para">Optionnal vector, of same dimension as x, indicating the coarse RSSI indicator on the x signal. It will be used to normalize the gain on the timing error detection. If not provided, the signal is supposed to be already normalized.</p></dd></dt>
+   <dt><span class="term">y:</span>
+      <dd><p class="para">Output signal, synchronized and sampled at 1 sample/symbol</p></dd></dt>
+   <dt><span class="term">dbg:</span>
+      <dd><p class="para">Optionnal debug structure (dbg.e: instantaneous clock error (1d vector), dbg.mu: phase shift vector)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Given an input oversampled binary signal, this function will downsample
+the signal at the symbol rate, and synchronize the sampling points with
+the signal clock.</p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">nsymb</span> <span class="scilaboperator">=</span> <span class="scilabnumber">120</span><span class="scilabdefault">;</span> <span class="scilabcomment">// Generate 120 symbols</span>
+<span class="scilabid">osf</span> <span class="scilaboperator">=</span> <span class="scilabnumber">9</span><span class="scilabdefault">;</span>     <span class="scilabcomment">// Input oversampling factor = 9 samples / symbol</span>
+<span class="scilabcomment">// Creation of a simple signal: NRZ filtered by its matched filter</span>
+<span class="scilabcomment">// (e.g. a moving average)</span>
+<span class="scilabid">x</span> <span class="scilaboperator">=</span> <span class="scilabid">ma</span><span class="scilabopenclose">(</span><span class="scilabid">nrz</span><span class="scilabopenclose">(</span><span class="scilabid">prbs</span><span class="scilabopenclose">(</span><span class="scilabid">nsymb</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span><span class="scilabid">osf</span><span class="scilabopenclose">)</span><span class="scilabdefault">,</span><span class="scilabid">osf</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Apply a fractionnal delay so as to have a desynchronized signal</span>
+<span class="scilabcomment">// (otherwise the signal would be already synchronized)</span>
+<span class="scilabid">x</span> <span class="scilaboperator">=</span> <span class="scilabid">frac_delay</span><span class="scilabopenclose">(</span><span class="scilabid">x</span><span class="scilabdefault">,</span> <span class="scilabid">osf</span><span class="scilaboperator">/</span><span class="scilabnumber">2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Proceed to clock recovery</span>
+<span class="scilabid">cr</span> <span class="scilaboperator">=</span> <span class="scilabid">clock_rec_init</span><span class="scilabopenclose">(</span><span class="scilabid">osf</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabopenclose">[</span><span class="scilabid">cr</span><span class="scilabdefault">,</span><span class="scilabid">y</span><span class="scilabopenclose">]</span> <span class="scilaboperator">=</span> <span class="scilabid">clock_rec_process</span><span class="scilabopenclose">(</span><span class="scilabid">cr</span><span class="scilabdefault">,</span><span class="scilabid">x</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// --</span><span class="scilabcomment">&#0062;</span><span class="scilabcomment"> y is now sampled at one sample / symbol and synchronized</span>
+<span class="scilabcomment">///////</span>
+<span class="scilabcomment">/////// PLOTTING THE RESULTS</span>
+<a class="scilabmacro" href="scilab://scf">scf</a><span class="scilabopenclose">(</span><span class="scilabnumber">0</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabmacro" href="scilab://clf">clf</a><span class="scilabopenclose">(</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Initial sampling points</span>
+<a class="scilabmacro" href="scilab://subplot">subplot</a><span class="scilabopenclose">(</span><span class="scilabnumber">211</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabmacro" href="scilab://plot">plot</a><span class="scilabopenclose">(</span><span class="scilabid">x</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Resampled output</span>
+<a class="scilabmacro" href="scilab://subplot">subplot</a><span class="scilabopenclose">(</span><span class="scilabnumber">212</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabmacro" href="scilab://plot">plot</a><span class="scilabopenclose">(</span><span class="scilabid">y</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div>
+<div class="mediaobject"><img src='./ex_clock_rec_process.png'/><caption><b><p class="para">Example of clock recovery</p></b></caption></div></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="clock_rec_init.html" class="link">clock_rec_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="clock_rec_init.html">&lt;&lt; clock_rec_init</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="delay_estim.html">delay_estim &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

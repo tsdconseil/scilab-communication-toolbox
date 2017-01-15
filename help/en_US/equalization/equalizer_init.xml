@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from equalizer_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="equalizer_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>equalizer_init</refname>
+    <refpurpose>Creation of an equalizer object (LMS, CMA, ...)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   eq = equalizer_init(wf); // Default equalizer (DDE, K = 1)
+   eq = equalizer_init(wf,K,errf,struct,gain,N1[,N2]]);
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>wf:</term>
+      <listitem><para> Waveform specification (see <link linkend="wf_init">wf_init</link>)</para></listitem></varlistentry>
+   <varlistentry><term>K:</term>
+      <listitem><para> Input over-sampling ratio (number of samples per symbol)</para></listitem></varlistentry>
+   <varlistentry><term>errf:</term>
+      <listitem><para> Error function (either 'slicer' or 'cma')</para></listitem></varlistentry>
+   <varlistentry><term>struct:</term>
+      <listitem><para> Equalizer structure (either 'dde' or 'dfe')</para></listitem></varlistentry>
+   <varlistentry><term>gain:</term>
+      <listitem><para> Update gain (determine the convergence speed)</para></listitem></varlistentry>
+   <varlistentry><term>N1:</term>
+      <listitem><para> Number of taps of the direct FIR equalization filter</para></listitem></varlistentry>
+   <varlistentry><term>N2:</term>
+      <listitem><para> Number of taps of the feedback FIR equalization filter (only for DFE equalization)</para></listitem></varlistentry>
+   <varlistentry><term>eq:</term>
+      <listitem><para> Resulting equalizer object (can be used with <link linkend="equalizer_process">equalizer_process</link>)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Initialize an equalizer object, ever symbol sampled (K = 1), or
+fractionnaly sampled (K &gt; 1). Supported equalization structures are the
+following:
+<itemizedlist>
+<listitem><para><emphasis role="bold">Decision Directed Equalization (DDE)</emphasis> <varname>(strucuture = 'dde'):</varname> A direct FIR filter is tuned (every symbol period) to minimize the output error.</para></listitem>
+<listitem><para><emphasis role="bold">Decision Feedback Equalization (DFE)</emphasis> <varname>(strucuture = 'dfe'):</varname> Both a direct FIR filter (working at <latex>$K\cdot f_{symb}$</latex>) and a feedback filter (working at symbol frequency) on the decision (slicer) outputs are used.</para></listitem>
+</itemizedlist>
+   </para>
+   <para>
+Possible cost function are the following:
+<itemizedlist>
+<listitem><para><emphasis role="bold">Slicer</emphasis> <varname>(errf = 'slicer'):</varname> <latex>$E=(d-y)^2$</latex>. Note: with this error function, the algorithm is better known as <emphasis role="bold">LMS (Least Mean Square).</emphasis></para></listitem>.
+<listitem><para><emphasis role="bold">Constant modulus algorithm (CMA)</emphasis> <varname>(errf = 'cma'):</varname> <latex>$E=\left(R-|y|^2\right)^2$</latex></para></listitem>
+</itemizedlist>
+For a complete example, see the <link linkend="equalizer_process">equalizer_process</link> function.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="equalizer_process">equalizer_process</link></member>
+   <member><link linkend="wf_init">wf_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J. Arzi, full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

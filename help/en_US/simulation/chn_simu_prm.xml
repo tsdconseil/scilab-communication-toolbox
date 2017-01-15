@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from chn_simu_prm.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="chn_simu_prm" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>chn_simu_prm</refname>
+    <refpurpose>Radio channel simulation (noise, phase error, frequency error, ...)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   prm = chn_simu_prm();
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>prm:</term>
+      <listitem><para> Resulting structure defining the channel parameters.</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function enables to initialize the field of a structure defining which distortions
+to use when simulating a radio
+propagation channel with the <link linkend="chn_simu">chn_simu</link> function.
+By default, all channel distortions are disabled. One can activate them selectivly by
+modifying the following fields:
+<itemizedlist>
+<listitem><emphasis role="bold">White noise:</emphasis> <varname>prm.sigma_wn</varname> = standard deviation of the white noise.</listitem>
+<listitem><emphasis role="bold">Time shift:</emphasis> <varname>prm.delta_t</varname> = timing offset between receiver and transmitter clock (in samples).</listitem>
+<listitem><emphasis role="bold">Frequency offset:</emphasis> <varname>prm.freq_offset</varname> = frequency offset (compared to expected carrier frequency).</listitem>
+<listitem><emphasis role="bold">Phase offset:</emphasis> <varname>prm.phase_offset</varname> = carrier phase offset (in radians).</listitem>
+</itemizedlist>
+Note: TODO : complete with other possible source of distortions (selective channel, I/Q imbalance, clock offset, ...)
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+// Default channel configuration
+prm = chn_simu_prm();
+// Add white noise (sigma = 0.1)
+prm.sigma_wn = 0.1;
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="chn_simu">chn_simu</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available at http://www.tsdconseil.fr/log/sct</member>
+   </simplelist>
+</refsection>
+</refentry>

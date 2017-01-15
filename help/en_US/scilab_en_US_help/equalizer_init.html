@@ -1,0 +1,101 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>equalizer_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">&lt;&lt; Equalization</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="equalizer_process.html">equalizer_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization</a> &gt; equalizer_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">equalizer_init</h1>
+    <p class="refpurpose">Creation of an equalizer object (LMS, CMA, ...)</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">eq</span><span class="default"> = </span><span class="functionid">equalizer_init</span><span class="default">(</span><span class="default">wf</span><span class="default">); </span><span class="comment">// Default equalizer (DDE, K = 1)</span>
+<span class="default">eq</span><span class="default"> = </span><span class="functionid">equalizer_init</span><span class="default">(</span><span class="default">wf</span><span class="default">,</span><span class="default">K</span><span class="default">,</span><span class="default">errf</span><span class="default">,</span><span class="default">struct</span><span class="default">,</span><span class="default">gain</span><span class="default">,</span><span class="default">N1</span><span class="default">[,</span><span class="default">N2</span><span class="default">]]);</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">wf:</span>
+      <dd><p class="para">Waveform specification (see <a href="wf_init.html" class="link">wf_init</a>)</p></dd></dt>
+   <dt><span class="term">K:</span>
+      <dd><p class="para">Input over-sampling ratio (number of samples per symbol)</p></dd></dt>
+   <dt><span class="term">errf:</span>
+      <dd><p class="para">Error function (either &#0039;slicer&#0039; or &#0039;cma&#0039;)</p></dd></dt>
+   <dt><span class="term">struct:</span>
+      <dd><p class="para">Equalizer structure (either &#0039;dde&#0039; or &#0039;dfe&#0039;)</p></dd></dt>
+   <dt><span class="term">gain:</span>
+      <dd><p class="para">Update gain (determine the convergence speed)</p></dd></dt>
+   <dt><span class="term">N1:</span>
+      <dd><p class="para">Number of taps of the direct FIR equalization filter</p></dd></dt>
+   <dt><span class="term">N2:</span>
+      <dd><p class="para">Number of taps of the feedback FIR equalization filter (only for DFE equalization)</p></dd></dt>
+   <dt><span class="term">eq:</span>
+      <dd><p class="para">Resulting equalizer object (can be used with <a href="equalizer_process.html" class="link">equalizer_process</a>)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Initialize an equalizer object, ever symbol sampled (K = 1), or
+fractionnaly sampled (K &gt; 1). Supported equalization structures are the
+following:
+<ul class="itemizedlist"><li><p class="para"><b>Decision Directed Equalization (DDE)</b> <code class="varname">(strucuture = &#0039;dde&#0039;):</code> A direct FIR filter is tuned (every symbol period) to minimize the output error.</p></li>
+<li><p class="para"><b>Decision Feedback Equalization (DFE)</b> <code class="varname">(strucuture = &#0039;dfe&#0039;):</code> Both a direct FIR filter (working at <span><img src='./_LaTeX_equalizer_init.xml_1.png' style='position:relative;top:7px;width:63px;height:21px'/></span>) and a feedback filter (working at symbol frequency) on the decision (slicer) outputs are used.</p></li></ul></p>
+   <p class="para">Possible cost function are the following:
+<ul class="itemizedlist"><li><p class="para"><b>Slicer</b> <code class="varname">(errf = &#0039;slicer&#0039;):</code> <span><img src='./_LaTeX_equalizer_init.xml_2.png' style='position:relative;top:6px;width:92px;height:22px'/></span>. Note: with this error function, the algorithm is better known as <b>LMS (Least Mean Square).</b></p></li>.
+<li><p class="para"><b>Constant modulus algorithm (CMA)</b> <code class="varname">(errf = &#0039;cma&#0039;):</code> <span><img src='./_LaTeX_equalizer_init.xml_3.png' style='position:relative;top:8px;width:113px;height:27px'/></span></p></li></ul>
+For a complete example, see the <a href="equalizer_process.html" class="link">equalizer_process</a> function.</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="equalizer_process.html" class="link">equalizer_process</a></li>
+   <li class="member"><a href="wf_init.html" class="link">wf_init</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J. Arzi, full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">&lt;&lt; Equalization</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_ca5a8203ee32ba5a7f3c2eab6b35db8b.html">Equalization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="equalizer_process.html">equalizer_process &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

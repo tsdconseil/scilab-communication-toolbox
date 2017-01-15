@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from iqi_simu.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="iqi_simu" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>iqi_simu</refname>
+    <refpurpose>Simulation of I/Q imbalance</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   y = iqi_simu(x, phi, g)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>s:</term>
+      <listitem><para> reference signal, without I/Q imbalance</para></listitem></varlistentry>
+   <varlistentry><term>phi:</term>
+      <listitem><para> Phase mismatch (in radians)</para></listitem></varlistentry>
+   <varlistentry><term>g:</term>
+      <listitem><para> Relative gain mismatch</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para> output signal</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+I/Q mismatch model:
+<latex>\begin{align}
+Re(y_n) &amp;= s_n \cos(\omega n)\\
+Im(y_n) &amp;= g s_n \sin(\omega n+\phi)\\
+\end{align}</latex>
+   </para>
+   <para>
+   </para>
+   <para>
+Or, equivalently:
+<latex>$$y_n = \alpha x_n + \beta x_n^\star$$</latex>
+where <latex>$x_n$</latex> is the ideal signal (free of imbalance)
+<latex>$x_n = s_n \cos(\omega n) + \mathbf{i} s_n \sin(\omega n)$</latex>
+and <latex>$\alpha$</latex> and <latex>$\beta$</latex> are defined as:
+   </para>
+   <para>
+<latex>\begin{align}
+\alpha &amp;= \frac{1+ge^{-i\phi}}{2}\\
+\beta &amp;= \frac{1-ge^{i\phi}}{2}\\
+\end{align}</latex>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="iqi_blind_est">iqi_blind_est</link></member>
+   <member><link linkend="iqi_cor">iqi_cor</link></member>
+   <member><link linkend="iqi_irr">iqi_irr</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available at http://www.tsdconseil.fr/log/sct</member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>A Low-complexity Feed-forward I/Q Imbalance Compensation Algorithm, N.A. Moseley, http://doc.utwente.nl/66726/1/moseley.pdf</para>
+</refsection>
+</refentry>

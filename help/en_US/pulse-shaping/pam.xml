@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from pam.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="pam" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>pam</refname>
+    <refpurpose>Pulse Amplitude Modulation (PAM)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   x = pam(b,osf,k)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>b:</term>
+      <listitem><para> Input binary sequence</para></listitem></varlistentry>
+   <varlistentry><term>osf:</term>
+      <listitem><para> Over-Sampling Factor</para></listitem></varlistentry>
+   <varlistentry><term>k:</term>
+      <listitem><para> Number of bits / symbol</para></listitem></varlistentry>
+   <varlistentry><term>x:</term>
+      <listitem><para> Output signal</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function convert a binary sequence (0 and 1) to a sequence
+of number between -1 and 1 (each symbols maps k bits).
+Each symbol is repeated <varname>osf</varname> times (the same as if the
+pulse shaping filter is rectangular / moving average).
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="nrz">nrz</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on...</member>
+   </simplelist>
+</refsection>
+</refentry>

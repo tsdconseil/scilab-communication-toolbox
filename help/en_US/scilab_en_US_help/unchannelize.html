@@ -1,0 +1,84 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>unchannelize</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="polyphase_form.html">&lt;&lt; polyphase_form</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a> &gt; unchannelize</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">unchannelize</h1>
+    <p class="refpurpose">Extract m channels (with identical bandwidth) using a polyphase filter bank and FFT (Harris method).</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">Y</span><span class="default"> = </span><span class="functionid">unchannelize</span><span class="default">(</span><span class="default">x</span><span class="default">,</span><span class="default">h</span><span class="default">,</span><span class="default">m</span><span class="default">)</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">x:</span>
+      <dd><p class="para">input signal, 1d vector</p></dd></dt>
+   <dt><span class="term">h:</span>
+      <dd><p class="para">FIR filter coefficients (low pass channel filter), 1d vector</p></dd></dt>
+   <dt><span class="term">m:</span>
+      <dd><p class="para">number of channels e.g. decimation ratio</p></dd></dt>
+   <dt><span class="term">Y:</span>
+      <dd><p class="para">Output matrix, with one row for each output channel.</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">The different channels must be located at (normalized) frequencies of 0, 1/m, ..., (m-1)/m.
+For other cases, see the reference cited in the bibliography.</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Bibliography</h3>
+   <p class="para">Digital Receivers and Transmitters Using Polyphase Filter Banks for Wireless Communications, F.J. Harris, 2003</p></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="polyphase_form.html">&lt;&lt; polyphase_form</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_d7de6729a5a09a5f4d35ada170acf0c4.html">Clock recovery &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

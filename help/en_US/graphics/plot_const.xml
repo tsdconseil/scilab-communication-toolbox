@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from plot_const.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="plot_const" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>plot_const</refname>
+    <refpurpose>Plot a scatter plot or a theorical constellation diagram</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   plot_const(x)        // Scatter plot view
+   plot_const(x,'i')    // Scatter plot view, force identic x and y scale
+   plot_const(wf)       // Waveform constellation plot
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>x:</term>
+      <listitem><para> I/Q signal (I is real part, Q is imaginary part) to plot</para></listitem></varlistentry>
+   <varlistentry><term>wf:</term>
+      <listitem><para> waveform object (as can be initialized by <link linkend="wf_init">wf_init</link>)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Plot <latex>$\mathbf{Im}(x) = f\left(\mathbf{Re}(x)\right)$</latex>.
+   </para>
+   <para>
+<refsection><title>Example 1: plotting a theorical constellation</title></refsection>
+<programlisting>
+wf = wf_init('qpsk');
+clf(); plot_const(wf);
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_const1.png" format="PNG"/></imageobject>
+<refsection><title>Example 2: Scatter plot</title></refsection>
+<programlisting>
+// Generate a test 8PSK signal, with:
+// sampling frequency = 1 MHz, zero IF, symbol frequency = 100 kHz
+fs = 1e6; fi = 0; fsymb = 100e3;
+mod = mod_init('8psk',fs,fi,fsymb);
+b = prbs(1000); // Random bit sequence
+[mod,x] = mod_process(mod,b);
+x = awgn(x,0.02); // Add some noise
+clf(); plot_const(x, 'i');
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_const2.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+<refsection><title>Limitations</title></refsection>
+Cannot be used in the same figure as other plots (except other plot_const), because of an incompatibility due to the colormap function.
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="plot_psd">plot_psd</link></member>
+   <member><link linkend="plot_rimp">plot_rimp</link></member>
+   <member><link linkend="plot_eyed">plot_eyed</link></member>
+   <member><link linkend="wf_init">wf_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

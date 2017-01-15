@@ -1,0 +1,6 @@
+Changelog of the SCILAB Communication Toolbox
+
+comm_tbx 0.1.0
+    * Creation
+ -- Auteur J.A. / www.tsdconseil.fr, 15/01/2017
+

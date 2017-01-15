@@ -1,0 +1,92 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>rc_fir</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="ma.html">&lt;&lt; ma</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_30e015e4f9a4ef2071b1f8b6436043bb.html">Filters</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="rc_pulse.html">rc_pulse &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_60d8ccc17e94b667fb32a49729c79eec.html">Filtering and pulse shaping</a> &gt; <a href="section_30e015e4f9a4ef2071b1f8b6436043bb.html">Filters</a> &gt; rc_fir</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">rc_fir</h1>
+    <p class="refpurpose">FIR approximation of raised cosine filter</p></div>
+
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">beta:</span>
+      <dd><p class="para">rool-off factor</p></dd></dt>
+   <dt><span class="term">osf:</span>
+      <dd><p class="para">over sampling factor</p></dd></dt>
+   <dt><span class="term">n:</span>
+      <dd><p class="para">number of coefficients of the FIR filter</p></dd></dt></dl></div>
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">y</span><span class="default"> = </span><span class="functionid">rc_fir</span><span class="default">(</span><span class="default">r</span><span class="default">,</span><span class="default">osf</span><span class="default">,</span><span class="default">n</span><span class="default">)</span>
+<span class="default">y</span><span class="default"> = </span><span class="functionid">rc_fir</span><span class="default">(</span><span class="default">r</span><span class="default">,</span><span class="default">osf</span><span class="default">,</span><span class="default">n</span><span class="default">,</span>&#0039;<span class="default">sum</span>&#0039;<span class="default">)     </span><span class="default">Normalize</span> <span class="default">the</span> <span class="default">coefficients</span> <span class="default">to</span> <span class="default">have</span> <span class="default">sum</span><span class="default"> = 1 (</span><span class="default">default</span> <span class="default">behavior</span><span class="default">)</span>
+<span class="default">y</span><span class="default"> = </span><span class="functionid">rc_fir</span><span class="default">(</span><span class="default">r</span><span class="default">,</span><span class="default">osf</span><span class="default">,</span><span class="default">n</span><span class="default">,</span>&#0039;<span class="default">energy</span>&#0039;<span class="default">)  </span><span class="default">Normalize</span> <span class="default">the</span> <span class="default">coefficients</span> <span class="default">to</span> <span class="default">preserve</span> <span class="default">energy</span><span class="default"> : </span>&lt;<span class="default">span</span>&gt;&lt;<span class="default">img</span> <span class="default">src</span><span class="default">=</span>&#0039;<span class="default">.</span><span class="default">/</span><span class="default">_LaTeX_rc_fir</span><span class="default">.</span><span class="default">xml_1</span><span class="default">.</span><span class="default">png</span>&#0039; <span class="default">style</span><span class="default">=</span>&#0039;<span class="default">position</span><span class="default">:</span><span class="default">relative</span><span class="default">;</span><span class="default">top</span><span class="default">:21</span><span class="default">px</span><span class="default">;</span><span class="default">width</span><span class="default">:85</span><span class="default">px</span><span class="default">;</span><span class="default">height</span><span class="default">:42</span><span class="default">px</span>&#0039;<span class="default">/</span>&gt;&lt;<span class="default">/</span><span class="default">span</span>&gt;</pre></div></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para"></p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Examples</h3>
+   <div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabid">h</span> <span class="scilaboperator">=</span> <span class="scilabid">rc_fir</span><span class="scilabopenclose">(</span><span class="scilabid">r</span><span class="scilaboperator">=</span><span class="scilabnumber">0.5</span><span class="scilabdefault">,</span><span class="scilabid">osf</span><span class="scilaboperator">=</span><span class="scilabnumber">2</span><span class="scilabdefault">,</span><span class="scilabid">n</span><span class="scilaboperator">=</span><span class="scilabnumber">5</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">plot_rimp</span><span class="scilabopenclose">(</span><span class="scilabid">h</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="rc_pulse.html" class="link">rc_pulse</a></li>
+   <li class="member"><a href="srrc_pulse.html" class="link">srrc_pulse</a></li>
+   <li class="member"><a href="srrc_fir.html" class="link">srrc_fir</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Bibliography</h3>
+   <p class="para">Multirate signal processing for communication systems, F.J. Harris, page 89.</p></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="ma.html">&lt;&lt; ma</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_30e015e4f9a4ef2071b1f8b6436043bb.html">Filters</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="rc_pulse.html">rc_pulse &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

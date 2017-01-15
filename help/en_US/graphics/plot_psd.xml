@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from plot_psd.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="plot_psd" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>plot_psd</refname>
+    <refpurpose>Plot Power Spectral Density (psd)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   plot_psd(x);
+   plot_psd(x,fs[,opt]);
+   plot_psd(x,fs[,opt],fmin,fmax);
+   plot_psd(x,fs[,opt],fmin,fmax,nwin);
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>x:</term>
+      <listitem><para> Input signal (real or complex)</para></listitem></varlistentry>
+   <varlistentry><term>fs:</term>
+      <listitem><para> Input signal sampling rate, in Hz</para></listitem></varlistentry>
+   <varlistentry><term>opt:</term>
+      <listitem><para> String option to be passed to the plot function (like 'r' for a red color)</para></listitem></varlistentry>
+   <varlistentry><term>fmin:</term>
+      <listitem><para> Minimum frequency to display (default is <latex>$-fs/2$</latex> for complex signals, or 0 for real signals)</para></listitem></varlistentry>
+   <varlistentry><term>fmax:</term>
+      <listitem><para> Maximum frequency to display (default is <latex>$fs/2$</latex>)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Plot power versus frequency. If the input signal is real, then only
+the positive frequencies are plotted. Otherwise (complex signal), both
+positive and negative frequencies are displayed.
+   </para>
+   <para>
+Note that this function compute the PSD in a very simple way: it just apply a Hann window before doing the DFT. So, it is just a convenience function to have a quick view at the spectrum of a signal. For more advanced PSD, see the cspect, pspect, ... native functions of SCILAB.
+   </para>
+   <para>
+<refsection><title>Example 1 : PSD of a real signal (pure sinusoid)</title></refsection>
+<programlisting>
+// Sampling rate = 48 kHz, real signal @ 12 kHz
+fs = 48e3; f = 12e3;
+t = (0:1/fs:1)';
+x = sin(2*%pi*f*t);
+clf(); plot_psd(x,fs);
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_psd1.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+<refsection><title>Example 2 : PSD of a complex signal (pure exponential)</title></refsection>
+<programlisting>
+// Sampling rate = 48 kHz, complex signal @ 12 kHz
+fs = 48e3; f = 12e3;
+t = (0:1/fs:1)';
+x = exp(2*%pi*%i*f*t);
+clf(); plot_psd(x,fs);
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_psd2.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+<refsection><title>Example 3 : PSD of a BPSK signal (with zooming)</title></refsection>
+<programlisting>
+// Plot the PSD of a test BPSK signal (sampled at 1 MHz)
+// and zoom between 100 KHz and 300 KHz
+x = sct_test_signal1();
+plot_psd(x,fs=1e6,fmin=100e3,fmax=300e3);
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_psd3.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="plot_psd">plot_psd</link></member>
+   <member><link linkend="plot_rimp">plot_rimp</link></member>
+   <member><link linkend="plot_eye">plot_eye</link></member>
+   <member><link linkend="wf_init">wf_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

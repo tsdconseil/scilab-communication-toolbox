@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from downconvert_process.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="downconvert_process" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>downconvert_process</refname>
+    <refpurpose>Down-conversion to baseband.</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [dn,y] = downconvert_process(dn,x)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>x:</term>
+      <listitem><para> input signal (real or complex)</para></listitem></varlistentry>
+   <varlistentry><term>dn:</term>
+      <listitem><para> downconversion object (created with <link linkend="downconvert_init">downconvert_init</link>)</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para> output baseband signal (complex)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+If the input signal is complex, no image filtering is down.
+If the input signal is real, image is removed with a low-pass filter
+with cut-off frequency set to <latex>$\nu$</latex> if <latex>$\nu &lt; \frac{1}{4}$</latex>, and <latex>$\frac{1}{2}-\nu$</latex>  otherwise,
+where <latex>$\nu$</latex> is the normalized intermediate frequency
+(in either case, half-way between baseband signal and image signal).
+   </para>
+   <para>
+<refsection><title>Example 1: downconversion of a BPSK complex signal (without image filtering)</title></refsection>
+<programlisting>
+// Load RF test signal (BPSK, I/Q)
+[x,fs,fi,fsymb] = sct_test_signal('c');
+;
+// Down-conversion to baseband
+dn = downconvert_init(fi/fs,'c');
+[dn,y] = downconvert_process(dn,x);
+</programlisting>
+Scatter plot view:
+<imageobject><imagedata fileref="ex_downconvert1_const.png" format="PNG"/></imageobject>
+Frequency view:
+<imageobject><imagedata fileref="ex_downconvert1_psd.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+<refsection><title>Example 2: downconversion of a BPSK real signal (with image filtering)</title></refsection>
+<programlisting>
+// Load RF test signal (BPSK, I/Q)
+[x,fs,fi,fsymb] = sct_test_signal();
+;
+// Down-conversion to baseband
+dn = downconvert_init(fi/fs,'r');
+[dn,y] = downconvert_process(dn,x);
+</programlisting>
+Scatter plot view:
+<imageobject><imagedata fileref="ex_downconvert2_const.png" format="PNG"/></imageobject>
+Frequency view:
+<imageobject><imagedata fileref="ex_downconvert2_psd.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="downconvert_init">downconvert_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

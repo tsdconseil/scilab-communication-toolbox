@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from itrp_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="itrp_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>itrp_init</refname>
+    <refpurpose>Initialization of an interpolator object</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   itrp = itrp_init();
+   itrp = itrp_init(type);
+   itrp = itrp_init('lagrange', degree);
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>type:</term>
+      <listitem><para> Interpolator type (default is cardinal spline). Can be 'linear', 'cspline' or 'lagrange'.</para></listitem></varlistentry>
+   <varlistentry><term>degree:</term>
+      <listitem><para> Degree of the polynomial for Lagrange interpolation</para></listitem></varlistentry>
+   <varlistentry><term>itrp:</term>
+      <listitem><para> Interpolator object</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function will create an interpolator object, that can be used either on fixed interpolation points (then use the interpolator with the <link linkend="resample">resample</link> function) or inside a dynamic clock recovery process (use with <link linkend="clock_rec_init">clock_rec_init</link> function).
+   </para>
+   <para>
+Supported interpolation modes are the following:
+<itemizedlist>
+<listitem><para><emphasis role="bold">Linear</emphasis> (<varname>type = 'linear'</varname>) : Piecewise linear interpolation between each pair of known values (equivalent to Lagrange of degree 1)</para></listitem>
+<listitem><para><emphasis role="bold">Cardinal spline</emphasis> (<varname>type = 'cspline'</varname>) : Piecewise third degree polynomial between each pair of known values. The polynomials computed here are Catmull-Rom cardinal splines (equivalent to Lagrange of degree 3).</para></listitem>
+<listitem><para><emphasis role="bold">Lagrange</emphasis> (<varname>type = 'lagrange'</varname>) : Piecewise polynomial interpolation (the degree d is configurable) between each pair of known values. Each polynomial is computed according to the d+1 neareast known values.</para></listitem>
+</itemizedlist>
+For illustration purpose, below is a comparison of the different interpolators with the Runge function :
+   </para>
+   <para>
+<mediaobject><imageobject><imagedata fileref="ex_itrp_init.png" format="PNG"/></imageobject><caption><para>Comparison of different interpolators with the Runge function</para></caption></mediaobject>
+   </para>
+   <para>
+<refsection>
+<title>Example</title>
+In this example, we use piecewise linear interpolation, with fixed interpolation points.
+<programlisting>
+R = 10; // Interpolation ratio
+itrp = itrp_init('linear');     // Creation of the interpolator
+t1 = (-1:0.2:1)'; x1 = t1 .^ 2; // Before interpolation
+x2 = resample(x1,R,itrp);       // After interpolation
+// Plotting
+plot(t1,x1,'sk');
+t2 = (-1:(0.2/R):1)'; plot(t2,x2(1:length(t2)),'b-');
+legend(['$t^2$','Linear interpolation']);
+</programlisting>
+<mediaobject><imageobject><imagedata fileref="ex_itrp_init_simple.png" format="PNG"/></imageobject><caption><para>Linear interpolation</para></caption></mediaobject>
+</refsection>
+<refsection>
+<title>How to define a custom interpolator</title>
+<para>You can also define your own interpolator object, and for it to be compatible with the other functions (<link linkend="resample">resample</link>, <link linkend="clock_rec_init">clock_rec_init</link>), it should be a structure containing the following fields:</para>
+<itemizedlist>
+<listitem><varname>itrp.name:</varname> name of the interpolator (string)</listitem>
+<listitem><varname>itrp.nspl:</varname> Number of input sample needed to compute one output sample. For example, for the piecewise linear interpolator, it is 2.</listitem>
+<listitem><varname>itrp.delay:</varname> Delay, in number of input samples, introduced by the interpolator</listitem>
+<listitem><varname>itrp.fun:</varname> Interpolating function, which prototype should be: <varname>y = itrp_fun(x,mu,itrp)</varname>,
+where x are nspl input samples, mu is the fractionnal delay, itrp the interpolator object, and y the computed output sample.
+</listitem>
+</itemizedlist>
+</refsection>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="resample">resample</link></member>
+   <member><link linkend="clock_rec_init">clock_rec_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

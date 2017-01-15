@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from equalizer_zfe.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="equalizer_zfe" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>equalizer_zfe</refname>
+    <refpurpose>Zero-forcing equalizer (ZFE) FIR filter computation</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   g = equalizer_zfe(h,n)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>h:</term>
+      <listitem><para> Channel filter impulse response</para></listitem></varlistentry>
+   <varlistentry><term>n:</term>
+      <listitem><para> Number of coefficients to use for the equalization filter</para></listitem></varlistentry>
+   <varlistentry><term>g:</term>
+      <listitem><para> Output equalization filter coefficients (FIR filter)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Given a channel impulse response <latex>$h(z)$</latex>, computes the coefficients of a FIR filter <latex>$g(z)$</latex>, trying to approximate <latex>$g\star h = \delta_d$</latex>, <latex>$d$</latex> being a global delay. That is, g is approximately the inverse filter of h.
+   </para>
+   <para>
+Note: this require to be able to measure the channel impulse response (for instance by sending a dirac-like signal at the emitter side).
+   </para>
+   <para>
+<refsection><title>Example</title></refsection>
+<programlisting>
+// Measured channel response
+h = [0.1 1 0.2];
+// Try to compute an inverse FIR filter
+g = equalizer_zfe(h, 5)
+// Test the convolution product between g and h:
+// this should approximativly be a dirac.
+convol(g,h)'
+</programlisting>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="equalizer_init">equalizer_init</link></member>
+   <member><link linkend="equalizer_process">equalizer_process</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

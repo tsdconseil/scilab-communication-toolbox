@@ -1,0 +1,104 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ped_init</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="lf_reset.html">&lt;&lt; lf_reset</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a> &gt; ped_init</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">ped_init</h1>
+    <p class="refpurpose">Phase error detector for BPSK / M-ASK (squaring loop) and M-PSK (<span><img src='./_LaTeX_ped_init.xml_1.png' style='position:relative;top:2px;width:24px;height:19px'/></span> loop)</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">ped</span><span class="default"> = </span><span class="functionid">ped_init</span><span class="default">(</span><span class="default">tp</span><span class="default">,</span><span class="default">M</span><span class="default">[,</span><span class="default">tc</span><span class="default">])</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">tp:</span>
+      <dd><p class="para">Type of phase detector (can be &#0039;psk&#0039;, &#0039;costa&#0039;, &#0039;psk-atan&#0039;, &#0039;psk-map&#0039;, or &#0039;ask&#0039;)</p></dd></dt>
+   <dt><span class="term">M:</span>
+      <dd><p class="para">Number of possible symbols (<span><img src='./_LaTeX_ped_init.xml_2.png' style='position:relative;top:2px;width:56px;height:18px'/></span> with <span><img src='./_LaTeX_ped_init.xml_3.png' style='position:relative;top:2px;width:13px;height:16px'/></span> being the number of bits per symbol)</p></dd></dt>
+   <dt><span class="term">tc:</span>
+      <dd><p class="para">Time constant for coarse RSSI estimation (expressed in number of samples)</p></dd></dt>
+   <dt><span class="term">ped:</span>
+      <dd><p class="para">Phase error detector object. Fields are: <code class="varname">ped.process</code>: processing function of form <code class="varname">[ped,dphi] = process(ped,z)</code>, with <code class="varname">dphi</code>: phase error, and <code class="varname">z</code>: input sample, other fields are private.</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">This is a basic phase error detector for M-PSK (or M-ASK).
+Different type of detectors are supported:
+<ul class="itemizedlist"><li><p class="para"><b>tp = &#0039;psk&#0039;</b> The signal is exponentiated by M so as to remove the modulation, the RSSI is coarsly estimated (first order IIR filter), and then the phase error is estimated as:
+<span><img src='./_LaTeX_ped_init.xml_4.png' style='position:relative;top:9px;width:94px;height:30px'/></span>.
+This detector is less sensible to noise as the naive atan detector.</p></li>
+<li><p class="para"><b>tp = &#0039;psk-atan&#0039;</b>  Arc-tangent phase detector for PSK modulation (also called &#0039;tan-loop&#0039;), computed as:
+<span><img src='./_LaTeX_ped_init.xml_5.png' style='position:relative;top:6px;width:137px;height:22px'/></span>.
+Be carefull, this detector can be very unreliable at low SNR or when clock recovery is not yet done (very high artificial phase error when the signal magnitude is near 0).</p></li>
+<li><p class="para"><b>tp = &#0039;psk-costa&#0039;</b> Use a costa loop (works only with BPSK or QPSK).</p></li>
+<li><p class="para"><b>tp = &#0039;ask&#0039;</b> If M=2, then use a squaring loop (as for BPSK), otherwise, use a tan-loop.</p></li></ul></p>
+   <p class="para"><div class="refsection"><h3 class="title">Example</h3></div>
+<div class="programlisting"><table border="0" width="100%"><tr><td width="98%"><pre class="scilabcode"><span class="scilabcomment">// Default PED for BPSK (squaring loop)</span>
+<span class="scilabid">ped</span> <span class="scilaboperator">=</span> <span class="scilabid">ped_init</span><span class="scilabopenclose">(</span><span class="scilabstring">&#0039;</span><span class="scilabstring">psk</span><span class="scilabstring">&#0039;</span><span class="scilabdefault">,</span><span class="scilabnumber">2</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabid">n</span> <span class="scilaboperator">=</span> <span class="scilabnumber">100</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Test signal : varying phase error from -%pi to +%pi</span>
+<span class="scilabid">phase</span> <span class="scilaboperator">=</span> <a class="scilabmacro" href="scilab://linspace">linspace</a><span class="scilabopenclose">(</span><span class="scilaboperator">-</span><span class="scilabconstants">%pi</span><span class="scilabdefault">,</span><span class="scilabconstants">%pi</span><span class="scilabdefault">,</span><span class="scilabid">n</span><span class="scilabopenclose">)</span><span class="scilaboperator">&#0039;</span><span class="scilabdefault">;</span>
+<span class="scilabid">z</span> <span class="scilaboperator">=</span> <a class="scilabcommand" href="scilab://exp">exp</a><span class="scilabopenclose">(</span><span class="scilabconstants">%i</span><span class="scilaboperator">*</span><span class="scilabid">phase</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Use the PED on the signal </span><span class="scilabcomment">&#0034;</span><span class="scilabcomment">z</span><span class="scilabcomment">&#0034;</span>
+<span class="scilabid">detected_phase</span> <span class="scilaboperator">=</span> <span class="scilabid">ped</span><span class="scilaboperator">.</span><span class="scilabfield">process</span><span class="scilabopenclose">(</span><span class="scilabid">ped</span><span class="scilabdefault">,</span> <span class="scilabid">z</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span>
+<span class="scilabcomment">// Notice phase ambiguity due to the squaring</span>
+<a class="scilabmacro" href="scilab://clf">clf</a><span class="scilabopenclose">(</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span> <a class="scilabmacro" href="scilab://plot">plot</a><span class="scilabopenclose">(</span><span class="scilabid">phase</span><span class="scilabdefault">,</span><span class="scilabid">detected_phase</span><span class="scilabopenclose">)</span><span class="scilabdefault">;</span></pre></td><td valign="top"><a href="scilab://scilab.execexample/"><img src="ScilabExecute.png" border="0"/></a></td><td valign="top"><a href="scilab://scilab.editexample/"><img src="ScilabEdit.png" border="0"/></a></td><td></td></tr></table></div>
+<div class="mediaobject"><img src='./ex_ped_psk.png'/><caption><b><p class="para">Example of phase error detection (here squaring loop, e.g. M=2). Note the phase ambiguity of <span><img src='./_LaTeX_ped_init.xml_6.png' style='position:relative;width:14px;height:11px'/></span>.</p></b></caption></div></p></div>
+
+<div class="refsection"><h3 class="title">See also</h3>
+   <ul class="itemizedlist"><li class="member"><a href="carrier_rec_init.html" class="link">carrier_rec_init</a></li>
+   <li class="member"><a href="carrier_rec_process.html" class="link">carrier_rec_process</a></li></ul></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="lf_reset.html">&lt;&lt; lf_reset</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_f94753725ca926e48269b81a1c9e8803.html">Carrier recovery</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>

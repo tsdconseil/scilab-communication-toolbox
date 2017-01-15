@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from psfilter_process.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="psfilter_process" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>psfilter_process</refname>
+    <refpurpose>Filter the input signal with a pulse shaping filter</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   [psf,y] = psfilter_process(psf, x)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>psf:</term>
+      <listitem><para> Pulse-shaping filter object (as can be created with <link linkend="psfilter_init">psfilter_init</link>)</para></listitem></varlistentry>
+   <varlistentry><term>x:</term>
+      <listitem><para> Input signal</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para> Output signal (filtered)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Take as input a signal (already upsampled and constellation mapped), and apply a pulse shaping filter.
+   </para>
+   <para>
+<refsection><title>Example</title></refsection>
+<programlisting>
+// Gaussian filter, 16 samples/symbol, 3*16 taps FIR, B.T. = 0.5
+osf = 16;
+ntaps = 3 * osf;
+BT = 0.5;
+psf = psfilter_init('g', osf, ntaps, BT);
+b = prbs(20); // Binary sequence to be encoded
+x = symmap(b,1,'b'); // NRZ encoding
+x = upsample(x, osf);
+[psf,y] = psfilter_process(psf,x);
+clf();
+subplot(211); plot_binary(b);  xtitle("Input signal (binary)");
+subplot(212); plot(y); xtitle("Filtered signal");
+</programlisting>
+<mediaobject><imageobject><imagedata fileref="ex-psfilter_process.png" format="PNG"/></imageobject><caption><para>Example with Gaussian shaping filter</para></caption></mediaobject>
+   </para>
+   <para>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="psfilter_init">psfilter_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

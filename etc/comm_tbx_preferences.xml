@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<body>
+    <Form text="_d(comm_tbx, Rectangle)">
+        <Entry text="_d(comm_tbx, My Title)" value="exemple"/>
+        <Select text="_d(comm_tbx, Height)" value="18">
+            <Option value="12"/>
+            <Option value="18"/>
+            <Option value="24"/>
+        </Select>
+        <Select text="_d(comm_tbx, Width)" value="18">
+            <Option value="12"/>
+            <Option value="18"/>
+            <Option value="24"/>
+        </Select>
+        <Color text="_d(comm_tbx, Color)" value="#0000ff"/>
+        <Checkbox text="_d(comm_tbx, Outline)" value="yes"/>
+    </Form>
+</body>

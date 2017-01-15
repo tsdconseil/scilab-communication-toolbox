@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from lf_init.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="lf_init" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>lf_init</refname>
+    <refpurpose>Initialization of a first or second order loop filter for use in a carrier recovery PLL</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   lf = lf_init();           // Default is first order loop, with tc = 10 samples
+   lf = lf_init(1, tc);      // First order loop filter
+   lf = lf_init(2, BL, eta); // Second order loop filter
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>tc:</term>
+      <listitem><para> Time constant, in samples</para></listitem></varlistentry>
+   <varlistentry><term>BL:</term>
+      <listitem><para> Loop bandwidth, normalized to sample frequency</para></listitem></varlistentry>
+   <varlistentry><term>eta:</term>
+      <listitem><para> Damping factor</para></listitem></varlistentry>
+   <varlistentry><term>lf:</term>
+      <listitem><para> Returned loop filter object</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+The returned object can be used as a component in a carrier recovery process
+(see <link linkend="carrier_rec_init">carrier_rec_init</link>), or directly with the <varname>process</varname> method.
+A first order loop can recover and track the carrier phase (and the carrier frequency is supposed to be low compared to the symbol rate).
+A second order loop can also recover and track the carrier frequency.
+   </para>
+   <para>
+<refsection><title>Example 1: First order loop filter</title></refsection>
+<programlisting>
+wf = wf_init('bpsk');
+lf = lf_init(1, tc = 10); // First order loop filter
+// lf can be used now with carrier_rec_init
+</programlisting>
+   </para>
+   <para>
+<refsection><title>Example 2: Second order loop filter</title></refsection>
+<programlisting>
+fs  = 1e6;  // 1 MHz sampling frequency
+BL  = 10e3; // 10 KHz loop bandwidth (e.g. ~ 100 samples to converge)
+eta = 1;    // Damping factor
+lf = lf_init(2,BL/fs,eta);
+// lf can be used now with carrier_rec_init
+</programlisting>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="ped_init">ped_init</link></member>
+   <member><link linkend="carrier_rec_init">carrier_rec_init</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Bibliography</title>
+   <para>DVBS2 : <emphasis>Carrier phase synchronization techniques for broadband satellite transmissions</emphasis>, ESA, 2003</para>
+</refsection>
+</refentry>

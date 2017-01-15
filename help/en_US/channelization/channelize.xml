@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from channelize.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="channelize" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>channelize</refname>
+    <refpurpose>Channelization: frequency multiplexing of m input signals into a single signal (but with bandwidth multiplied by m)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   y = channelize(X)
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>X:</term>
+      <listitem><para> input matrix, size [n x m], with n: n samples / channel, and m: number of channels. Each column of X is a different signal. The number of columns (m) is the number of channels.</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para> output vector, size [nm x 1]</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+Merge m different signals into a single vector, by frequency multiplexing.
+The signals are shifted at the following normalized frequencies: 0, 1/m, 2/m, ..., (m-1)/m.
+Note: this could be done more effectively using a modulated filter bank (Harris method, reciprocal algorithm of the unchannelize function).
+<programlisting>
+fs = 1e3;
+mod = mod_init("bpsk", fs=1e3,fi=0,fsymb=50);
+[mod,x] = mod_process(mod,prbs(1000));
+nchn = 8;
+// In this example, just duplicate the same channel 8 times
+X = repmat(x,1,nchn);
+y = channelize(X); // output sample rate is 8 times higher
+clf(); plot_psd(y,8*fs,'b');
+</programlisting>
+<imageobject><imagedata fileref="ex_channelize.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

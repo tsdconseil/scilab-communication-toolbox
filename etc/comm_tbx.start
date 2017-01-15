@@ -1,0 +1,70 @@
+// Modifié le 01-05-2015 (C) J.A. / www.tsdconseil.fr
+
+// Copyright (C) 2008 - INRIA
+// Copyright (C) 2009 - DIGITEO
+
+// This file is released under the 3-clause BSD license. See COPYING-BSD.
+
+function comm_tbxlib = startModule()
+
+    TOOLBOX_NAME  = "comm_tbx";
+    TOOLBOX_TITLE = "Communication toolbox";
+
+  mprintf("Start " + TOOLBOX_TITLE + "\n");
+
+  if isdef("comm_tbxlib") then
+    warning("Communication toolbox is already loaded");
+    return;
+  end
+
+  etc_tlbx  = get_absolute_file_path("comm_tbx.start");
+  etc_tlbx  = getshortpathname(etc_tlbx);
+  root_tlbx = strncpy(etc_tlbx, length(etc_tlbx)-length("\etc\") );
+
+//Load  functions library
+// =============================================================================
+  mprintf("\tLoad macros\n");
+  pathmacros = pathconvert( root_tlbx ) + "macros" + filesep();
+  comm_tbxlib = lib(pathmacros);
+
+// load gateways and Java libraries
+// =============================================================================
+  verboseMode = ilib_verbose();
+  ilib_verbose(0);
+  //mprintf("\tLoad gateways\n");
+  //exec(pathconvert(root_tlbx+"/sci_gateway/loader_gateway.sce",%f));
+  //mprintf("\tLoad Java libraries\n");
+  //exec(pathconvert(root_tlbx+"/srcjava/loader.sce",%f));
+  ilib_verbose(verboseMode);
+
+// load localization
+  addlocalizationdomain(TOOLBOX_NAME, root_tlbx + "/locales");
+
+// Load and add help chapter
+// =============================================================================
+  if or(getscilabmode() == ["NW";"STD"]) then
+    mprintf("\tLoad help\n");
+    path_addchapter = pathconvert(root_tlbx+"/jar");
+    if ( isdir(path_addchapter) <> [] ) then
+      add_help_chapter(TOOLBOX_NAME, path_addchapter, %F);
+    end
+  end
+
+// Load demos
+// =============================================================================
+  if or(getscilabmode() == ["NW";"STD"]) then
+    mprintf("\tLoad demos\n");
+    pathdemos = pathconvert(root_tlbx+"/demos/comm_tbx.dem.gateway.sce", %F, %T);
+    add_demo(TOOLBOX_TITLE, pathdemos);
+  end
+
+// Load Preferences GUI
+// =============================================================================
+  if getscilabmode() == "STD" then
+    addModulePreferences(TOOLBOX_TITLE, root_tlbx, etc_tlbx + "comm_tbx_preferences.xml");
+  end
+
+endfunction
+
+comm_tbxlib = startModule();
+clear startModule; // remove startModule on stack

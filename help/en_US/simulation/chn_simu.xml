@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from chn_simu.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="chn_simu" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>chn_simu</refname>
+    <refpurpose>Radio channel simulation (noise, phase error, frequency error, ...)</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   y = chn_simu(x,prm);
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>x:</term>
+      <listitem><para>   input RF signal</para></listitem></varlistentry>
+   <varlistentry><term>prm:</term>
+      <listitem><para> structure defining the channel parameters (can be initialized with <link linkend="chn_simu_prm">chn_simu_prm</link>)</para></listitem></varlistentry>
+   <varlistentry><term>y:</term>
+      <listitem><para>   output, distorted, RF signal</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function simulates various distortions than can arise through a radio
+propagation channels. The parameter structure enables to specify the different
+possible distortions is documented <link linkend="chn_simu_prm">here</link>.
+   </para>
+   <para>
+<refsection><title>Example</title></refsection>
+<programlisting>
+prm = chn_simu_prm();
+// Add white noise
+prm.sigma_wn = .1;
+mod = mod_init('qpsk',fs=1e6,fi=100e3,fsymb=10e3,'c');
+[mod,x] = mod_process(mod,prbs(nsymb=100));
+scf(0); clf(); plot_const(x); xtitle("Before channel");
+x = chn_simu(x,prm);
+scf(1); clf(); plot_const(x); xtitle("After channel");
+</programlisting>
+<mediaobject><imageobject><imagedata fileref="ex-chn-simu2.png" format="PNG"/></imageobject><caption><para>Before and after channel simulation</para></caption></mediaobject>
+</para>
+</refsection>
+
+<refsection>
+   <title>Examples</title>
+   <programlisting role="example"><![CDATA[
+
+
+   ]]></programlisting>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="chn_simu_prm">chn_simu_prm</link></member>
+   <member><link linkend="awgn">awgn</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available at http://www.tsdconseil.fr/log/sct</member>
+   </simplelist>
+</refsection>
+</refentry>

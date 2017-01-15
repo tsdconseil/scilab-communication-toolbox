@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ *
+ * This help file was generated from plot_rimp.sci using help_from_sci().
+ *
+ -->
+
+<refentry version="5.0-subset Scilab" xml:id="plot_rimp" xml:lang="en"
+          xmlns="http://docbook.org/ns/docbook"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns:ns3="http://www.w3.org/1999/xhtml"
+          xmlns:mml="http://www.w3.org/1998/Math/MathML"
+          xmlns:scilab="http://www.scilab.org"
+          xmlns:db="http://docbook.org/ns/docbook">
+
+  <refnamediv>
+    <refname>plot_rimp</refname>
+    <refpurpose>Plotting of impulsionnal response of a FIR filter</refpurpose>
+  </refnamediv>
+
+
+<refsynopsisdiv>
+   <title>Calling Sequence</title>
+   <synopsis>
+   plot_rimp(h);
+   plot_rimp(t,h,opt);
+   
+   </synopsis>
+</refsynopsisdiv>
+
+<refsection>
+   <title>Parameters</title>
+   <variablelist>
+   <varlistentry><term>h:</term>
+      <listitem><para> filter impulse vector (1d vector)</para></listitem></varlistentry>
+   <varlistentry><term>t:</term>
+      <listitem><para> optionnal abcisse vector</para></listitem></varlistentry>
+   <varlistentry><term>opt:</term>
+      <listitem><para> Optionnal parameters for the plot function (color / marker selections)</para></listitem></varlistentry>
+   </variablelist>
+</refsection>
+
+<refsection>
+   <title>Description</title>
+   <para>
+This function is just a wrapper around native <varname>plot2d3</varname> function, specialized for FIR coefficients display.
+<refsection><title>Example</title></refsection>
+<programlisting>
+h = hilb(33); // Get Hilbert FIR filter approximation (33 coefs.)
+clf(); plot_rimp(h);
+</programlisting>
+<imageobject><imagedata fileref="ex_plot_rimp.png" format="PNG"/></imageobject>
+   </para>
+   <para>
+</para>
+</refsection>
+
+<refsection>
+   <title>See also</title>
+   <simplelist type="inline">
+   <member><link linkend="plot_psd">plot_psd</link></member>
+   <member><link linkend="plot_const">plot_const</link></member>
+   <member><link linkend="plot_eye">plot_eye</link></member>
+   </simplelist>
+</refsection>
+
+<refsection>
+   <title>Authors</title>
+   <simplelist type="vert">
+   <member>J.A., full documentation available on <ulink url="http://www.tsdconseil.fr/log/sct">http://www.tsdconseil.fr/log/sct</ulink></member>
+   </simplelist>
+</refsection>
+</refentry>

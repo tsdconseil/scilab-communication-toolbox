@@ -1,0 +1,80 @@
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>polyphase_form</title>
+    <style type="text/css" media="all">
+      @import url("scilab_code.css");
+      @import url("xml_code.css");
+      @import url("c_code.css");
+      @import url("style.css");
+    </style>
+  </head>
+  <body>
+    <div class="manualnavbar">
+    <table width="100%"><tr>
+      <td width="30%">
+    	<span class="previous"><a href="polyphase_filter.html">&lt;&lt; polyphase_filter</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="unchannelize.html">unchannelize &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+
+
+
+    <span class="path"><a href="index.html">comm_tbx</a> &gt;&gt; <a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a> &gt; polyphase_form</span>
+
+    <br /><br />
+    <div class="refnamediv"><h1 class="refname">polyphase_form</h1>
+    <p class="refpurpose">Creation of the polyphase representation of a signal</p></div>
+
+
+<div class="refsynopsisdiv"><h3 class="title">Calling Sequence</h3>
+   <div class="synopsis"><pre><span class="default">X</span><span class="default"> = </span><span class="functionid">polyphase_form</span><span class="default">(</span><span class="default">x</span><span class="default">,</span><span class="default">m</span><span class="default">);    </span><span class="comment">// Build polyphase matrix</span>
+<span class="default">x</span><span class="default"> = </span><span class="functionid">polyphase_form</span><span class="default">(</span><span class="default">X</span><span class="default">,</span><span class="default">m</span><span class="default">,-1); </span><span class="comment">// Reverse transform</span></pre></div></div>
+
+<div class="refsection"><h3 class="title">Parameters</h3>
+   <dl><dt><span class="term">x:</span>
+      <dd><p class="para">1d signal (1d vector, n elements)</p></dd></dt>
+   <dt><span class="term">M:</span>
+      <dd><p class="para">number of polyphase branches e.g. decimation ratio</p></dd></dt>
+   <dt><span class="term">X:</span>
+      <dd><p class="para">Polyphase matrix (m rows, n/m columns)</p></dd></dt></dl></div>
+
+<div class="refsection"><h3 class="title">Description</h3>
+   <p class="para">Creation of the polyphase matrix, with zero padding if necessary. First row of X is x(1), x(1+m), x(1+2m), ...,
+second row is x(2), x(2+m), etc.</p>
+   <p class="para"></p></div>
+
+<div class="refsection"><h3 class="title">Authors</h3>
+   <ul class="itemizedlist"><li class="member">J.A., full documentation available on <a href="http://www.tsdconseil.fr/log/sct" class="ulink">http://www.tsdconseil.fr/log/sct</a></li></ul></div>
+    <br />
+
+    <div class="manualnavbar">
+    <table width="100%">
+    <tr><td colspan="3" class="next"><a href="http://bugzilla.scilab.org/enter_bug.cgi?product=Scilab%20software&component=Documentation%20pages" class="ulink">Report an issue</a></td></tr>
+<tr>
+      <td width="30%">
+    	<span class="previous"><a href="polyphase_filter.html">&lt;&lt; polyphase_filter</a></span>
+
+      </td>
+      <td width="40%" class="center">
+      	<span class="top"><a href="section_7ab88b39572d31e8ba7f615e3a264225.html">Channelization</a></span>
+
+      </td>
+      <td width="30%" class="next">
+      	<span class="next"><a href="unchannelize.html">unchannelize &gt;&gt;</a></span>
+
+      </td>
+    </tr></table>
+      <hr />
+    </div>
+  </body>
+</html>
