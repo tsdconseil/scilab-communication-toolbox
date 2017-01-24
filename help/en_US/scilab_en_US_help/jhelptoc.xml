@@ -2,6 +2,8 @@
 <!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "http://java.sun.com/products/javahelp/toc_1_0.dtd">
 <toc version="1.0">
 <tocitem target="index" text="comm_tbx">
+<tocitem target="section_6d8f81fcf7acb24d9e822812f072ef87" text="Communication toolbox">
+<tocitem target="dummy_function" text="dummy_function"/>
 <tocitem target="section_f94753725ca926e48269b81a1c9e8803" text="Carrier recovery">
 <tocitem target="carrier_rec_init" text="carrier_rec_init"/>
 <tocitem target="carrier_rec_process" text="carrier_rec_process"/>
@@ -105,6 +107,7 @@
 </tocitem>
 <tocitem target="section_e35ce050228da3ab350983f4001e30c1" text="User interface">
 <tocitem target="wfselector" text="wfselector"/>
+</tocitem>
 </tocitem>
 </tocitem>
 </toc>

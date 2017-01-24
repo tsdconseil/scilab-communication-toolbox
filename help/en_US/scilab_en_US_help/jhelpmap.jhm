@@ -2,6 +2,8 @@
 <!DOCTYPE map PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Map Version 1.0//EN" "http://java.sun.com/products/javahelp/map_1_0.dtd">
 <map version="1.0">
 <mapID target="index" url="index.html"/>
+<mapID target="section_6d8f81fcf7acb24d9e822812f072ef87" url="section_6d8f81fcf7acb24d9e822812f072ef87.html"/>
+<mapID target="dummy_function" url="dummy_function.html"/>
 <mapID target="section_f94753725ca926e48269b81a1c9e8803" url="section_f94753725ca926e48269b81a1c9e8803.html"/>
 <mapID target="carrier_rec_init" url="carrier_rec_init.html"/>
 <mapID target="carrier_rec_process" url="carrier_rec_process.html"/>

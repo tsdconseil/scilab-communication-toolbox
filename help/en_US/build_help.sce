@@ -28,7 +28,7 @@ for i=1:size(mods,'*')
   else
   printf("Mise à jour de l''aide dans %s...\n", mods(i));
   //disp(files');
-  helptbx_helpupdate(files, helpdir + '/' + mods(i), macrosdir + '/' + mods(i), demosdir , modulename , %t);
+  helptbx_helpupdate(files, helpdir + mods(i), macrosdir + '/' + mods(i), demosdir , modulename , %t);
   end;
 end;
 
