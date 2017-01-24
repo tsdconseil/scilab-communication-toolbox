@@ -40,6 +40,10 @@ function y = polyphase_decimation(x,h,R)
 //  R: number of polyphase branches e.g. decimation ratio
 //  y: filtered and decimated output
 //
+//  See also
+//   unchannelize
+//   channelize
+//
 // Bibliography
 //   F.J. HARRIS, Digital Receivers and Transmitters Using Polyphase Filter Banks for Wireless Communications, 2003
 // Authors

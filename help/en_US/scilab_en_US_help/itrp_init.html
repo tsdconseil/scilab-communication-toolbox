@@ -50,7 +50,8 @@
       <dd><p class="para">Interpolator object</p></dd></dt></dl></div>
 
 <div class="refsection"><h3 class="title">Description</h3>
-   <p class="para">This function will create an interpolator object, that can be used either on fixed interpolation points (then use the interpolator with the <a href="resample.html" class="link">resample</a> function) or inside a dynamic clock recovery process (use with <a href="clock_rec_init.html" class="link">clock_rec_init</a> function).</p>
+   <p class="para">This function will create an interpolator object, that can be used either on fixed interpolation points (then use the interpolator with the <a href="resample.html" class="link">resample</a> function) or inside a dynamic clock
+recovery process (use with <a href="clock_rec_init.html" class="link">clock_rec_init</a> function).</p>
    <p class="para">Supported interpolation modes are the following:
 <ul class="itemizedlist"><li><p class="para"><b>Linear</b> (<code class="varname">type = &#0039;linear&#0039;</code>) : Piecewise linear interpolation between each pair of known values (equivalent to Lagrange of degree 1)</p></li>
 <li><p class="para"><b>Cardinal spline</b> (<code class="varname">type = &#0039;cspline&#0039;</code>) : Piecewise third degree polynomial between each pair of known values. The polynomials computed here are Catmull-Rom cardinal splines (equivalent to Lagrange of degree 3).</p></li>

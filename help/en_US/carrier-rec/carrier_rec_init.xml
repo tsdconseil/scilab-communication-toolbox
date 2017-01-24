@@ -42,7 +42,8 @@
 <refsection>
    <title>Description</title>
    <para>
-Initialize a carrier recovery loop, using a given Phase Error Detector (ped) and Loop Filter (lf). For example, so a to recover the carrier of a BPSK signal, one can use <link linkend="ped_psk">ped_psk</link> as a phase error detector, and <link linkend="lf_init">lf_init</link> (first or second order loop) as a loop filter.
+Initialize a carrier recovery loop, using a given Phase Error Detector (ped) and Loop Filter (lf). For example, so a to recover the carrier of a BPSK signal, one can use <link linkend="ped_init">ped_init</link> as a phase error detector,
+and <link linkend="lf_init">lf_init</link> (first or second order loop) as a loop filter.
    </para>
    <para>
 </para>

@@ -42,7 +42,8 @@ function itrp = itrp_init(varargin)
 // itrp: Interpolator object
 //
 // Description
-// This function will create an interpolator object, that can be used either on fixed interpolation points (then use the interpolator with the <link linkend="resample">resample</link> function) or inside a dynamic clock recovery process (use with <link linkend="clock_rec_init">clock_rec_init</link> function).
+// This function will create an interpolator object, that can be used either on fixed interpolation points (then use the interpolator with the <link linkend="resample">resample</link> function) or inside a dynamic clock 
+// recovery process (use with <link linkend="clock_rec_init">clock_rec_init</link> function).
 // 
 // Supported interpolation modes are the following:
 // <itemizedlist>

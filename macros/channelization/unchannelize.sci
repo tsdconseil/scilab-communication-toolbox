@@ -45,6 +45,12 @@ function Y = unchannelize(x,h,m)
 // The different channels must be located at (normalized) frequencies of 0, 1/m, ..., (m-1)/m.
 // For other cases, see the reference cited in the bibliography.
 //
+// See also
+//  channelize
+//  polyphase_filter
+//  polyphase_form
+//  polyphase_decimation
+//
 // Bibliography
 // Digital Receivers and Transmitters Using Polyphase Filter Banks for Wireless Communications, F.J. Harris, 2003
 //

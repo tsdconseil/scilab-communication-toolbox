@@ -39,7 +39,8 @@ function cr = carrier_rec_init(ped, lf)
 // lf: loop filter object (if not specified, the default is a first order loop, with time constant of 10 samples)
 //
 // Description
-// Initialize a carrier recovery loop, using a given Phase Error Detector (ped) and Loop Filter (lf). For example, so a to recover the carrier of a BPSK signal, one can use <link linkend="ped_psk">ped_psk</link> as a phase error detector, and <link linkend="lf_init">lf_init</link> (first or second order loop) as a loop filter.
+// Initialize a carrier recovery loop, using a given Phase Error Detector (ped) and Loop Filter (lf). For example, so a to recover the carrier of a BPSK signal, one can use <link linkend="ped_init">ped_init</link> as a phase error detector, 
+// and <link linkend="lf_init">lf_init</link> (first or second order loop) as a loop filter.
 //
 // See also
 //  carrier_rec_process
